@@ -1,7 +1,7 @@
-\documentclass[journal, twocolumn]{IEEEtran}
+\documentclass[12pt, journal, onecolumn]{IEEEtran}
 \usepackage[switch]{lineno}
 \usepackage[utf8]{inputenc}
-\usepackage[draft]{graphicx}
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{float}
 \usepackage{caption}
@@ -13,7 +13,7 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage[colorlinks, citecolor=blue]{hyperref}
-\usepackage[numbers]{natbib}
+\usepackage[numbers, sort]{natbib}
 \usepackage{others/aastex_hack}
 \usepackage{subfloat}
 \usepackage{siunitx}
@@ -90,13 +90,16 @@ CLASSINFOpdf
     The Laser Interferometer Space Antenna (LISA) has three spacecrafts that form a triangle, each side 2.5 million
     km long~\cite{Prince2002, Robson2019}.
     Operating in the frequency range of \SI{1e-5}{\hertz}$\,\leq  f \leq\,$\SI{1e-1}{\hertz} LISA will be able to observe the sources millions of years before they merge.
-    The early detection capability will help better constrain and determine the orbital parameters of the observed binaries. \textbf{need more details,}
+    The early detection capability will help better constrain and determine the orbital parameters of the observed binaries.
+    Some sources detectable by LISA are the extreme mass ratio inspirals (EMRIs)~\cite{Gair2017, Klein2016, Chapman2022} and galactic binaries~\cite{wagg2021gravitational, Abott2017, Digman2022}.
+    This makes LISA also capable of mapping Milky Way galaxy's structure.
+    Another interesting class detectable by LISA is the double white dwarf stars (DWDs).
 
     The system model of the problem in which HZ and CDH are explained in Section~\ref{sec:sm}, while sections~\ref{sec:r} and~\ref{sec:df} describe results, and discussion and future work respectively.
 
 
-    \section{System Model}
-    \label{sec:sm}
+%    \section{System Model}
+%    \label{sec:sm}
     %    To generate the dataset for the detection of double compact objects (DCOs) in the LISA frequency band, we focus on simulating galaxy instances with higher metallicity content in the stars. This was done to try and simulate a closer-to-present-time environment for stellar evolution. For this purpose, the metallicity was chosen to be sampled from Beta distribution.\footnote{Beta(5, 80)}.
     %
     %    [We need a beta distribution picture here]
@@ -120,7 +123,6 @@ CLASSINFOpdf
 
     For this purpose, we generate the binaries using COMPAS, section~\ref{sec:population_synthesis}.
     We also created one hundred random Milky Way (MW) instances to place the generated binaries, section~\ref{subsec:mw}.
-    The reason for creating a lot of MW instances was to check whether a binary is detectable at any given distance within the MW galaxy given the same environmental circumstances.
     The detection of the binaries was done using LEGWORK v0.3.0~\cite{wagg2021legwork}.\footnote{\url{https://github.com/TeamLEGWORK/LEGWORK/tree/v0.3.0}}
 
 
@@ -234,7 +236,7 @@ CLASSINFOpdf
     Hence, BHBH can be discovered as far as Hoag's Object, NSNS in M31, and both BHNS and NSBH are far from M31 but much below Hoag's Object.
 
 
-    Almost all the highest values of average $d_{\max}$ of four types are around a \textbf{certain frequency} i.e.\ if a source has \textbf{certain orbital frequency} then it can be detected to its maximum detection distance.
+    Almost all the highest values of average $d_{\max}$ of four types are around a \textbf{certain frequency} i.e., if a source has \textbf{certain orbital frequency} then it can be detected to its maximum detection distance.
     It can be observed through the LISA overlay that this frequency lies in the area where the detector is most sensitive.
     Hence, if a source emits in the frequency region of the highest sensitivity of LISA, then it will be detected at a maximum distance.
 

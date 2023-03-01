@@ -71,7 +71,7 @@ plot_ecc(x, [amz_nsbh, amd_nsbh, aml_nsbh], [asz_nsbh, asd_nsbh, asl_nsbh], ax[2
 plot_ecc(x, [amz_bhns, amd_bhns, aml_bhns], [asz_bhns, asd_bhns, asl_bhns], ax[3], type_list2,
          return_raw_label('BHNS'))
 
-f.legend(loc='upper center', ncols=3)
+f.legend(loc='upper center', ncol=3)
 [i.set_yscale('log') for i in ax]
 plt.xlabel('Number of galaxies')
 plt.tight_layout()
