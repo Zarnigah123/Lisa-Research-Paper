@@ -12,7 +12,6 @@ Except for supernova mass remnant prescription, initial eccentricity ($e_i$), me
 For a one-to-one correspondence between the two generated data sets, the seed numbers were kept constant.
 
 For the mass of primary star, we draw the values from Kroupa initial mass function (IMF) with $m_1 \in [5, 150]\,\text{M}_\sun$~\cite{kroupa2001variation}.
-
 For the secondary star, we randomly draw from uniform distribution to satisfy $q\equiv m_2/m_1$, where $q\,\in\,[0, 1]$~\cite{sana2012binary}.
 An additional constraint of $m_2 \geq 0.1\,m_1$ was placed on $m_2$ as this is the minimum mass necessary for a star to be considered as a main sequence star.
 
@@ -107,15 +106,15 @@ We first generated \num{1e7} values for metallicity using the beta distribution 
 The values were stored in ten separate grid files and used with COMPAS to simulate the binaries.
 We denote the zero-age main sequence (ZAMS) parameters of the binaries as,
 \begin{equation}%
-    \mone{ZAMS}, \mtwo{ZAMS}, \semaxis{ZAMS}, \ecc{ZAMS}, z, \o
+    \mone{ZAMS}, \mtwo{ZAMS}, \semaxis{ZAMS}, \ecc{ZAMS}, Z, \o
 \end{equation}%
 
 COMPAS evolves the binaries up to \SI{13.7}{\giga\yr}.
 We represent the resulting double compact object (DCO) parameters as,
 \begin{equation}%
-    \mone{DCO}, \mtwo{DCO}, \semaxis{DCO}, \ecc{DCO}, \interval{evolve}, \interval{inspiral}, \interval{light}, z, \o,
+    \mone{DCO}, \mtwo{DCO}, \semaxis{DCO}, \ecc{DCO}, \interval{evolve}, \interval{inspiral}, \interval{light}, Z, \o,
 \end{equation}%
-where $z$ is the metallicity of the binary system, $\o$ is the seed number, $\interval{evolve}$ is the time required to form DCO from ZAMS, and $\interval{inspiral}$ is the DCO in-spiral time. $\semaxis{ZAMS}$, $\semaxis{DCO}$, $\ecc{ZAMS}$, and $\ecc{DCO}$ are the semi-major axis and eccentricity of the binary orbit at ZAMS and DCO formation respectively.
+where $Z$ is the metallicity of the binary system, $\o$ is the seed number, $\interval{evolve}$ is the time required to form DCO from ZAMS, and $\interval{inspiral}$ is the DCO in-spiral time. $\semaxis{ZAMS}$, $\semaxis{DCO}$, $\ecc{ZAMS}$, and $\ecc{DCO}$ are the semi-major axis and eccentricity of the binary orbit at ZAMS and DCO formation respectively.
 %We also consider a third time interval, $\interval{light}$ as the time required for gravitational waves (GWs) from
 %the merged binary to reach the detector (see, figure~\ref{fig:binaryevolution}). To calculate $\interval{light}$ we
 %need to know the distance to that particular binary, this was done using the galaxy model provided by~\cite{
