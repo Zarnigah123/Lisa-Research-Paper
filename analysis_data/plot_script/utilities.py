@@ -16,21 +16,29 @@ class H5Files:
     def __get_file(file_path_):
         return pd.DataFrame(h5.File(f'{file_path_}.h5', 'r')['simulation'][...])
 
+    @staticmethod
+    def __change_components(input_file):
+        input_file.loc[:, 'component'] = input_file['component'].astype(str)
+        dict_ = {'0.0': 'low-alpha', '1.0': 'high-alpha', '2.0': 'bulge'}
+        input_file.replace({'component': dict_}, inplace=True)
+
+        return input_file
+
     @property
     def get_bhbh_file(self):
-        return self.__get_file(f'{self.file_path}BHBH')
+        return self.__change_components(self.__get_file(f'{self.file_path}BHBH'))
 
     @property
     def get_nsns_file(self):
-        return self.__get_file(f'{self.file_path}NSNS')
+        return self.__change_components(self.__get_file(f'{self.file_path}NSNS'))
 
     @property
     def get_nsbh_file(self):
-        return self.__get_file(f'{self.file_path}NSBH')
+        return self.__change_components(self.__get_file(f'{self.file_path}NSBH'))
 
     @property
     def get_bhns_file(self):
-        return self.__get_file(f'{self.file_path}BHNS')
+        return self.__change_components(self.__get_file(f'{self.file_path}BHNS'))
 
     @staticmethod
     def get_min_max(df, field):
