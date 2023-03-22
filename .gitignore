@@ -133,3 +133,5 @@ dmypy.json
 .idea/
 /auxil/
 /out/main.synctex.gz
+analysis_data/varE_main_file_analysis/zarnigah_testing/
+analysis_data/others/

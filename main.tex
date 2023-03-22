@@ -95,7 +95,7 @@ CLASSINFOpdf
     Another interesting class detectable by LISA is the double white dwarf stars (DWDs) which are reported to be abundant in our MW galaxy and have a substantial detection in LISA as well~\cite{Korol2017, Nelemans2001, Willems2007, Ruiter2010}.
 
 
-%    The system model of the problem in which HZ and CDH are explained in Section~\ref{sec:sm}, while sections~\ref{sec:r} and~\ref{sec:df} describe results, and discussion and future work respectively.
+%    The system  of the problem in which HZ and CDH are explained in Section~\ref{sec:sm}, while sections~\ref{sec:r} and~\ref{sec:df} describe results, and discussion and future work respectively.
 
     A lot of effort has been put into the detection of potential GW sources for LISA, the resolution of issues that might be associated with the background data, and proposals of new candidates as GW sources for LISA~\cite[see, for example,][]{Lau2020, Sesana2009, Khakhaleva2020, Renzo2021, Fumagalli2022, wagg2021gravitational, Broekgaarden2021, Shao2021, Andrews2020, Belczynski2010, Guo2017, Babak2010, Blaut2010, Babak2008, Ruiter2010, Nelemans2001, Yu2010}.
     The detections of these sources will provide us with a better understanding of not only the evolution phases but also the endpoints of stellar evolution.
@@ -218,12 +218,13 @@ CLASSINFOpdf
     where $\tau$ is the look-back time for the binary, $D$ is the distance from Earth, $z$ is the metallicity, and `component' is the component of the galaxy in which the binary resides.\footnote{One of the three, \lowalpha\ disc, \highalpha\ disc, or bulge.}
     The parameters are generated for $i = 1, 2, 3, \ldots$, $N_\text{GAL}$, where $N_\text{GAL} = 100$.
     For each galaxy generated, all the COMPAS generated DCOs were tested for their detection.
-    The method for detection is described in [add section reference here for detection.]
+%    The method for detection is described in section~\ref{subsec:detection}.
+
 
     \section{Parameters of interest}
     \label{sec:parameters-of-interest}
     We first generated \num{1e7} values for metallicity using the beta distribution within the COMPAS limits (see, appendix~\ref{sec:appA} for details).
-    The values were stored in ten separate grid files and used with COMPAS to simulate the binaries.
+%    The values were stored in ten separate grid files and used with COMPAS to simulate the binaries.
     We denote the zero-age main sequence (ZAMS) parameters of the binaries as,
     \begin{equation}%
         \mone{ZAMS}, \mtwo{ZAMS}, \semaxis{ZAMS}, \ecc{ZAMS}, Z, \o
@@ -232,7 +233,7 @@ CLASSINFOpdf
     COMPAS evolves the binaries up to \SI{13.7}{\giga\yr}.
     We represent the resulting double compact object (DCO) parameters as,
     \begin{equation}%
-        \mone{DCO}, \mtwo{DCO}, \semaxis{DCO}, \ecc{DCO}, \interval{evolve}, \interval{inspiral}, \interval{light}, Z, \o,
+        \mone{DCO}, \mtwo{DCO}, \semaxis{DCO}, \ecc{DCO}, \interval{evolve}, \interval{inspiral}, Z, \o,
         \label{eq:dco_parameter_names}
     \end{equation}%
     where $Z$ is the metallicity of the binary system, $\o$ is the seed number, $\interval{evolve}$ is the time required to form DCO from ZAMS, and $\interval{inspiral}$ is the DCO in-spiral time. $\semaxis{ZAMS}$, $\semaxis{DCO}$, $\ecc{ZAMS}$, and $\ecc{DCO}$ are the semi-major axis and eccentricity of the binary orbit at ZAMS and DCO formation respectively.
@@ -256,17 +257,6 @@ CLASSINFOpdf
         \label{eq:characteristic_strain}
     \end{equation}
 
-    \subsection{Detection}
-    \label{subsec:detection}
-
-    \subsection{Model variation}
-    \label{subsec:model_variation}
-    In a number of previous works, $e_\text{ZAMS}$ was taken as $0$~\cite{Vigna2018, Barrett2018, Lau2020,
-        Broekgaarden2021, wagg2021gravitational}.
-    The main reason for this assumption is that they argue that eccentricity at ZAMS is not likely critical for predicting detection rates as they deal with post-interaction binaries and their orbital eccentricities become zero after mass transfer~\cite{Hurley2002}. %, de2015merger}).
-    To test the accuracy of this assumption, we simulate another population with the same parameters.
-    The only change is that $e_\text{ZAMS}$ of the binaries is left to be varied by the COMPAS suite.
-    We compare the difference in detection rates and properties of the two models and give our conclusion.
 
     %\subsection{Binary Evolution}\label{subsec:be}
     %One of the most important factors in the observation of any source is their distance from the observational instrument.
@@ -274,6 +264,9 @@ CLASSINFOpdf
     %This surely complicates the evolution of our DCO as at the time of observation, LISA will also be observing the past of the sources.
     %To handle such a situation, we first calculate the time the GW will take from the source to LISA using the given distances within the milky way.
     %This logic is implemented within Legwork~\cite{wagg2021legwork} which gives strong tools for evolving the sources to the desired point.
+
+    \section{Reults 1: COMPAS sources}
+    In this section we discuss the DCO pairs obtained via simulation in the COMPAS suite.
 
 
     \section{Results 1: LISA Sources}
@@ -414,6 +407,17 @@ CLASSINFOpdf
     %    \caption{Comparison of detection rate in VE and E0.}
     %    \label{pie}
     %\end{figure}
+
+    \subsection{Model variation: To be added somewhere else,}
+    \label{subsec:model_variation}
+    In a number of previous works, $e_\text{ZAMS}$ was taken as zero~\cite{Vigna2018, Barrett2018, Lau2020,
+        Broekgaarden2021, wagg2021gravitational}.
+    The main reason for this assumption is that they argue that eccentricity at ZAMS is not likely critical for predicting detection rates as they deal with post-interaction binaries and their orbital eccentricities become zero after mass transfer~\cite{Hurley2002}. %, de2015merger}).
+    To test the accuracy of this assumption, we simulate another population with the same parameters.
+    The only change is that $e_\text{ZAMS}$ of the binaries is left to be varied by the COMPAS suite.
+    We compare the difference in detection rates and properties of the two models and give our conclusion.
+
+
 
 
     \section{Discussion and Future work}\label{sec:df}
