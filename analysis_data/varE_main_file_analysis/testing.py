@@ -1,4 +1,5 @@
 """Created on Mar 09 11:02:09 2023."""
+
 from itertools import chain
 
 import h5py as h5
@@ -38,7 +39,6 @@ zams_loc = np.array(list(chain.from_iterable([np.where(sys_values['SEED'][()] ==
 # get sys_parameter values
 sys_seeds = sys_values['SEED'][()][zams_loc]
 weights = np.array([1] * len(sys_seeds))
-
 m1_zams = sys_values['Mass@ZAMS(1)'][()][zams_loc]
 m2_zams = sys_values['Mass@ZAMS(2)'][()][zams_loc]
 a_zams = sys_values['SemiMajorAxis@ZAMS'][()][zams_loc]
@@ -89,9 +89,6 @@ for i in conds:
 combined_ = pd.concat(conds)
 combined_.reset_index(inplace=True, drop=True)
 
-f, ax = plt.subplots(2, 2, figsize=(10, 8), sharey='all')
-
-
 def make_filled_kde_plot(dataframe, x_val, hue, axes, log_scale, multiple, get_ax=False):
     legend = get_ax
     p = sns.kdeplot(dataframe, x=x_val, hue=hue, palette='RdYlGn', ax=axes, log_scale=log_scale,
@@ -100,6 +97,12 @@ def make_filled_kde_plot(dataframe, x_val, hue, axes, log_scale, multiple, get_a
     if get_ax:
         return p
 
+
+#################################################################################
+# important figure
+#################################################################################
+
+f, ax = plt.subplots(2, 2, figsize=(10, 8), sharey='all')
 
 make_filled_kde_plot(combined_, 'Mass@ZAMS(1)', 'cond', ax[0][0], (True, False), 'fill')
 make_filled_kde_plot(combined_, 'Mass@ZAMS(2)', 'cond', ax[0][1], (True, False), 'fill')
