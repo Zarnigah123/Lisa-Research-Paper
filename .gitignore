@@ -127,11 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/new_data.zip
-/Research paper final.zip
 
 .idea/
 /auxil/
 /out/main.synctex.gz
-analysis_data/varE_main_file_analysis/zarnigah_testing/
-analysis_data/others/
+/analysis_data/backup_scripts/
