@@ -132,3 +132,4 @@ dmypy.json
 /auxil/
 /out/main.synctex.gz
 /analysis_data/backup_scripts/
+/analysis_data/others/
