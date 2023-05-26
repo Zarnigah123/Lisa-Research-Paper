@@ -13,14 +13,20 @@ To generate a binary systems, COMPAS requires the following parameters from the 
 
 We've discussed the first four parameters in the main text, here we will discuss the selection of eccentricity and metallicity values.
 
-\begin{center}%
-    \section*{Eccentricity}
-    \label{sec:eccentricity}
-\end{center}%
+\section*{Eccentricity}
+\label{sec:eccentricity}
 
 In order to evaluate whether the initial eccentricity affects GW emission at the end stages of the DCO, we generate two identical data sets.
 For the primary data set, we chose the eccentricity value to be varied between 0 and 1.
-For the selection of eccentricity, the power law and gamma distribution were also considered.\@\\
+For the other data set we take the eccentricity value to be 0 for all the generated binaries.
+
+\section*{Metallicity}
+\label{sec:metallicity}
+
+One of the major challenges in generation of the stellar binaries for this study was the selection of a distribution which will result in stars at the higher end of COMPAS metallicity boundary, $z = 0.03$.
+A power-law, gamma, and beta distributions were selected to try and simulate the required metallicity distribution.
+In the following section, we discuss the selected distributions briefly,
+
 
 \subsection{Power law distribution}
 \label{subsec:power-law-distribution}
@@ -57,8 +63,8 @@ For $0 \leq x \leq 1, a > 0, b > 0$ and $\Gamma$ is the gamma function.\footnote
 Figure~\ref{fig:beta1} shows the beta distribution with a fixed $\beta=80$.
 Similarly, figure~\ref{fig:beta2} shows the beta distribution with a fixed $\alpha=5$.
 For our case, we selected $\text{Beta}(5, 80)$ as our distribution of choice for metallicity and generated $10^7$ values between the COMPAS limits $10^{-4} < z < 0.03$.
-
-\begin{minipage}[l]{0.45\columnwidth}
+\,\\\,\\
+\begin{minipage}[l]{0.45\columnwidth}%%
     \centering
     \includegraphics[width=\linewidth]{images/powerlaw}
     \captionof{figure}{PL distribution}
@@ -72,18 +78,16 @@ For our case, we selected $\text{Beta}(5, 80)$ as our distribution of choice for
     \label{fig:gamma_distribution}
 \end{minipage}
 
-\hfill
-
-\begin{minipage}[l]{0.48\textwidth}
+\begin{minipage}[l]{0.45\columnwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/beta1}
+    \includegraphics[width=\linewidth]{images/beta1}
     \captionof{figure}{Beta distribution with varying $\alpha$ and fixed $\beta$ parameter.}
     \label{fig:beta1}
 \end{minipage}
 \hfill
-\begin{minipage}[c]{0.48\textwidth}
+\begin{minipage}[r]{0.45\columnwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/beta2}
+    \includegraphics[width=\linewidth]{images/beta2}
     \captionof{figure}{Beta distribution with fixed $\alpha$ and varying $\beta$ parameter.}
     \label{fig:beta2}
 \end{minipage}
@@ -108,12 +112,3 @@ For our case, we selected $\text{Beta}(5, 80)$ as our distribution of choice for
 %    \caption{Beta distribution with fixed $\alpha$ and varying $\beta$ parameters.}
 %    \label{fig:beta2}
 %\end{figure}%
-
-\begin{center}
-    \section*{Metallicity}
-    \label{sec:metallicity}
-\end{center}
-One of the major challenges in generation of the stellar binaries for this study was the selection of a distribution which will result in stars at the higher end of COMPAS metallicity boundary, $z = 0.03$.
-A power-law, gamma, and beta distributions were selected to try and simulate the required metallicity distribution.
-In the following section, we discuss the selected distributions briefly,
-\newpage\cleardoublepage

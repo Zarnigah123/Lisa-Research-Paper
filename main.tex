@@ -1,5 +1,5 @@
 \documentclass[journal, twocolumn]{IEEEtran}
-\usepackage[switch]{lineno}
+%\usepackage[switch]{lineno}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -75,7 +75,7 @@ CLASSINFOpdf
         Cobb-Douglas Habitability Score, Exoplanets, Habitability, Habitable zone, Convex Optimization, Duality.
     \end{IEEEkeywords}
 
-    \linenumbers
+%    \linenumbers
 
 
     \section{Introduction}
@@ -106,12 +106,7 @@ CLASSINFOpdf
         \item to make a general detection comparison between DCO binaries with and without an initial eccentricity.
     \end{itemize}%
 
-	This research paper is structured as follows, in section~\ref{sec:population_synthesis} we discuss the generation of binary systems using COMPAS suite. In section~\ref{sec:evolution-methodology} we discuss the methodology adopted in this research for evolving the stars from ZAMS to DCOs and than from DCOs to their merger stage. The calculation of SNR and the potential detection candidates are discussed in section~\ref{sec:potential-detection-by-lisa}. 
-
-%    For this purpose, we generate the binaries using COMPAS, section~\ref{sec:population_synthesis}.
-%    One hundred random Milky Way (MW) instances were generated in which the binaries were placed for detection, section~\ref{sec:milky_way}.
-%    The detection of the binaries was done using LEGWORK v0.3.0~\cite{wagg2021legwork}.\footnote{\url{https://github.com/TeamLEGWORK/LEGWORK/tree/v0.3.0}}
-
+	This research paper is structured as follows, in section~\ref{sec:population_synthesis} we discuss the generation of binary systems using COMPAS suite. In section~\ref{sec:evolution-methodology} we give a general overview of the methodology adopted in this research for evolving the stars from ZAMS to DCOs, from DCOs to merger stage, and their detection by LISA as well. The evolution of binaries and their detection is discussed in section~\ref{sec:evolution-and-detection}.
 
     \section{Population synthesis}
     \label{sec:population_synthesis}
@@ -167,10 +162,10 @@ CLASSINFOpdf
     COMPAS evolves the binaries up to \SI{13.7}{\giga\yr}.
     We represent the resulting double compact object (DCO) parameters as,
     \begin{equation}%
-        \mone{DCO}, \mtwo{DCO}, \semaxis{DCO}, \ecc{DCO}, \interval{evolve}, \interval{inspiral}, Z, \o,
+        \mone{DCO}, \mtwo{DCO}, \semaxis{DCO}, \ecc{DCO}, \interval{evolve}, Z, \o,
         \label{eq:dco_parameter_names}
     \end{equation}%
-    where $Z$ is the metallicity of the binary system, $\o$ is the seed number, $\interval{evolve}$ is the time required to form DCO from ZAMS, and $\interval{inspiral}$ is the DCO in-spiral time. $\semaxis{ZAMS}$, $\semaxis{DCO}$, $\ecc{ZAMS}$, and $\ecc{DCO}$ are the semi-major axis and eccentricity of the binary orbit at ZAMS and DCO formation respectively.
+    where $Z$ is the metallicity of the binary system, $\o$ is the seed number, $\interval{evolve}$ is the time required to form DCO from ZAMS. $\semaxis{ZAMS}$, $\semaxis{DCO}$, $\ecc{ZAMS}$, and $\ecc{DCO}$ are the semi-major axis and eccentricity of the binary orbit at ZAMS and DCO formation respectively.
     \begin{figure}[!ht]%
         \centering%
         \includegraphics[width=\linewidth]{images/binary_evolution}%
@@ -178,11 +173,11 @@ CLASSINFOpdf
         \label{fig:binaryevolution}%
     \end{figure}%
     Once the DCOs have been formed, we move out of the COMPAS suite.
-    For the LISA detection, the DCO formed from the set of binaries are checked for an evolutionary stop, i.e., only those binaries are selected that will merge within the Hubble time.
-    The selected candidates are than provided to the python framework LEGWORK~\cite{wagg2021legwork} that evolves them from the DCO stage to the merger state.
-    It evolves the binaries using equations from~\cite{Peters1963, Peters1964}.
+    For the LISA detection, the DCO formed from the set of binaries were checked for an evolutionary stop, i.e., only those binaries were selected that will merge within the Hubble time.
+    The selected candidates were than provided to the python framework LEGWORK~\cite{wagg2021legwork} that evolved them from the DCO stage to the merger state.
+    It evolved the binaries using equations from~\cite{Peters1963, Peters1964}.
 
-    The DCO-merger evolution method follows the one outlined by~\cite{wagg2021gravitational} closely.
+    The DCO$-$merger evolution method follows the one outlined by~\cite{wagg2021gravitational} closely.
     The evolution was done such that the MW galaxy instance was divided into bins based on the metallicity values of the evolving binaries.
     The evolution time was calculated after taking into consideration the ZAMS-DCO evolution time and the lookback time of the binary produced.
     If a binary, at DCO stage, had a resultant merger time greater than the difference of its lookback time and ZAMS-DCO evolution time, it was marked as an inspiralling binary.
@@ -204,50 +199,43 @@ CLASSINFOpdf
     \label{eq:characteristic_strain}
     \end{equation}
     
-	\section{Potential detection by LISA}
-	\label{sec:potential-detection-by-lisa}
-    
-    After running the simulations following section~\ref{sec:population_synthesis}, we obtained 12254 DCOs ($\sim0.12254\%$).
-    Out of these, only 6539 DCOs merged within Hubble time ($\sim$53.3622\%) thus making them a potential LISA source.\footnote{Overall, only $\sim$0.06539\% binary system formed into DCOs that merge within Hubble time.}
+	\section{Evolution and detection}
+	\label{sec:evolution-and-detection}
+	    
+    After running the simulations as outlined in section~\ref{sec:population_synthesis}, we obtained 12254 DCOs ($\sim0.12254\%$).
+    Following section~\ref{sec:evolution-methodology}, we obtain the required parameter values of only 6539 DCOs that merged within Hubble time ($\sim$53.3622\%) thus making them a potential LISA source.\footnote{Overall, only $\sim$0.06539\% binary system formed into DCOs that merge within Hubble time.}
     The Hubble time merge rate of DCOs is given in table~\ref{tab:dco_details},
 
-    \begin{table}[!h]
+    \begin{table}[!ht]
         \centering
+%        \resizebox{\columnwidth}{!}{
         \begin{tabular}{@{}cccc@{}}
         	\toprule
             \multirow{2.5}{*}{BHBH} & \multirow{2.5}{*}{NSNS} & \multicolumn{2}{c}{BHNS} \\ \cmidrule(l){3-4}
             &           & NSBH    & BHNS     \\ \midrule
             492/663 & 4752/9219 & 480/663 & 815/1504 \\ \bottomrule
         \end{tabular}%
+%    	 }
         \caption{Number of DCOs merged within Hubble time vs total DCOs formed by the COMPAS suite.}
         \label{tab:dco_details}
     \end{table}
 
-    The highest merging rate in this study is of BHBH DCO type ($\sim$74.21\%), followed closely by NSBH ($\sim$72.4\%), BHNS ($\sim$54.2\%) and lastly NSNS DCO type ($\sim$51.55\%).
-
-	\begin{figure*}[!h]
+    The highest merging rate in this study is of BHBH DCO type ($\sim$74.21\%), followed closely by NSBH ($\sim$72.4\%), BHNS ($\sim$54.2\%) and lastly NSNS DCO type ($\sim$51.55\%) comprising the `candidate binaries'.\footnote{Such DCO pairs which can have a potential LISA detection.}
+    
+	\begin{figure*}[!h]%
 		\centering
-	     \includegraphics[width=\textwidth]{analysis_data/varE_main_file_analysis/all_zams_params}
-		\caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the merged DCO binaires. The bottom row shows the selection of supernova kick paramters made by the COMPAS suite.}
+	    \includegraphics[width=\textwidth]{analysis_data/main_analysis_folder/all_zams_params}
+		\caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the `candidate' binaries. The bottom row shows the selection of supernova kick parameters made by the COMPAS suite.}
 		\label{fig:all_zams_params}
-	\end{figure*}
-
-%    \begin{figure}[!h]
-%        \centering
-%        \includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/all_zams_params}
-%        \caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the merged DCO binaires. The bottom row shows the selection of supernova kick paramters made by the COMPAS suite.}
-%        \label{fig:all_zams_params}
-%    \end{figure}
-
-%    \subsection{Binary Black Holes (BHBH)}
-%    \label{subsec:binary-black-holes-(bhbh)}
-%    The number of BHBH pair detections per galaxy instance is shown in figure~\ref{fig:bhbhndetections}.
-%    The mean value of selected parameters\footnote{$\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of the generated MW galaxy are shown in figure~\ref{fig:bhbh_n_galaxy_mean_plot}.
-    These binaries were than checked for their inspiral phase, and as the number of inspiralling binaries in our study is small compared to the total generated population\footnote{Due to not using any technique that forces DCO produciton, e.g., STROOPWAFEL~\cite{Broekgaarden2019}}, multiple detections of a single binary object are present in the final outputs.
+	\end{figure*}%
     
-    Table~\ref{tab:bhbh-details-table} shows the details about mass of progenitor and their evolution counterparts for maximum and minimum mass at ZAMS and DCO stages.
+    These binaries were than checked for their inspiral phase using the $\interval{evolve}$\footnote{Obtained via COMPAS.} and $\interval{lookback}$\footnote{Obtained via galaxy synthesis.}.
+    The difference between lookback and evolution time of a binary was required to be greater than its merger time.\footnote{Obtained via LEGWORK framework.}
+    As the number of inspiralling binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}} multiple detections of a single binary object are present in the final outputs.
+    Table~\ref{tab:bhbh-details-table} shows some details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages. In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected  parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
     
-	\begin{table*}[!h]
+    
+	\begin{table*}[!ht]
 		\centering
 		\resizebox{\textwidth}{!}{%
 			\begin{tabular}{@{}ccccccccccc@{}}
@@ -316,7 +304,7 @@ CLASSINFOpdf
 %	
 %	On the other hand, the maximum size NS in the NSBH pair came out to be $\sim$\SI{1.935}{\Msun} and the BH mass was $\sim$\SI{3.824}{\Msun}. The progenitors of this pair have the masses $\sim$\SI{14.090}{\Msun}, and $\sim$\SI{13.959}{\Msun}.
 	
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
         \includegraphics[width=\columnwidth]{images/first}
         \caption{\label{first}Detectable sources' characteristic strain along with dominant frequency in our simulations (Top) is shown on the LISA sensitivity curve as well as their separate types (bottom). The sources are placed based on their eccentricities i.e. Highly eccentric sources are towards the red side while low eccentric sources are on the green side of the spectrum. The reference lines are based on the average eccentricity of our simulations i.e. where in the galaxy an eccentric binary would be assuming an average chirp mass, orientation, and sky location for a remaining inspiral time (vertical lines) and a given distance (diagonal lines). See also figure bla bla for detail understanding.}\label{detect} %--> Fig.1a
@@ -329,7 +317,7 @@ CLASSINFOpdf
 %	\subsection{Black Hole Neutron Star pairs (BHNS)}
 %	\label{subsec:black-hole-neutron-star-paris-(bhns)}
 
-%	\begin{figure}[!h]
+%	\begin{figure}[!ht]
 %		\centering
 %		\includegraphics[width=0.75\textwidth]{analysis_data/main_analysis_folder/BHNS_n_detections}
 %		\caption{Number of BHNS pair detection per galaxy instance. On average, a total of $\sim$32 pairs per galaxy were detected in this study.}
@@ -484,6 +472,7 @@ CLASSINFOpdf
     %	\onecolumn
     \appendices
     \input{appendixa}
+    \newpage
     \input{appendix_milkyway}
     \newpage
     \input{detection_images}
