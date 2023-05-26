@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: others/apj.bst
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Database file #1: reference.bib
+Field filled up at 97, reallocating.
+Reallocating 'buffer' (item size: 1) to 40000 items.
+Reallocating 'ex_buf' (item size: 1) to 40000 items.
+Reallocating 'name_sep_char' (item size: 1) to 40000 items.
+Reallocating 'name_tok' (item size: 4) to 40000 items.
+Reallocating 'out_buf' (item size: 1) to 40000 items.
+Reallocating 'sv_buffer' (item size: 1) to 40000 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'str_pool' (item size: 1) to 130000 items.
+You've used 54 entries,
+            3085 wiz_defined-function locations,
+            1082 strings with 42462 characters,
+and the built_in function-call counts, 43154 in all, are:
+= -- 2360
+> -- 5542
+< -- 19
++ -- 1850
+- -- 1909
+* -- 4785
+:= -- 8681
+add.period$ -- 54
+call.type$ -- 54
+change.case$ -- 401
+chr.to.int$ -- 54
+cite$ -- 54
+duplicate$ -- 1067
+empty$ -- 1605
+format.name$ -- 1980
+if$ -- 7930
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 52
+newline$ -- 166
+num.names$ -- 217
+pop$ -- 379
+preamble$ -- 1
+purify$ -- 375
+quote$ -- 0
+skip$ -- 947
+stack$ -- 0
+substring$ -- 1392
+swap$ -- 22
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 486
+warning$ -- 0
+while$ -- 204
+width$ -- 0
+write$ -- 565

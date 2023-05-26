@@ -51,7 +51,10 @@ The scale height parameter, $z_d$, for \lowalpha, \highalpha\ and bulge was take
 The MRT relationship plays an important part, both in the galaxy model and later on in the placement of DCOs within the galaxy as well.
 The model makes use of~\cite[Eq. 7]{Frankel2018},
 \begin{equation}
-    \feh(R,\tau) = F_m + \nabla\feh R - \left(F_m + \nabla\feh R_{\feh=0}^{\text{now}}\right) f(\tau)
+\begin{aligned}
+    \feh(R,\tau) &= F_m + \nabla\feh R \\
+    &- \left(F_m + \nabla\feh R_{\feh=0}^{\text{now}}\right) f(\tau)\\
+\end{aligned}
 \end{equation}
 For each point generated, if the value of metallicity produced by the MW model was less or greater than the limits defined by COMPAS\footnote{0.0001, 0.03} it was changed to a uniformly drawn random number between $\text{COMPAS}_\text{min} - \text{ZSOLAR}$ and $\text{ZSOLAR} - \text{COMPAS}_\text{max}$ respectively.
 \subsection{Galaxy synthesis}
