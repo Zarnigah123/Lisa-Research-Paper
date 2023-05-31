@@ -136,11 +136,12 @@ CLASSINFOpdf
     The main motivation behind the selection of such biased distribution is the higher metallic content of present-day stars.
     The population III stars were primarily composed of pure hydrogen and their deaths produced heavier metals in the Universe.
     By this extension, the stars that are present now or those that will merge now must have higher metallic content.
-    As such, we also note that having stars with higher metallic content might produce more NSNS or NS-BH pairs for detection.
+    As such, we also speculate that having stars with higher metallic content might produce more NSNS or NS-BH pairs for detection rather than BHBH pairs.
+	
 
     For eccentricity, we make use of two cases,
     \begin{itemize}
-        \item Case I: All the binary systems are generated using a flat distribution, $e \in [0, 1]$.
+        \item Case I: All the binary systems are generated using a flat distribution, $e \in (0, 1)$.
         \item Case II: All the binary systems are generated with circular orbits, i.e., $e = 0$.
     \end{itemize}
 
@@ -230,9 +231,9 @@ CLASSINFOpdf
 	\end{figure*}%
     
     These binaries were than checked for their inspiral phase using the $\interval{evolve}$\footnote{Obtained via COMPAS.} and $\interval{lookback}$\footnote{Obtained via galaxy synthesis.}.
-    The difference between lookback and evolution time of a binary was required to be greater than its merger time.\footnote{Obtained via LEGWORK framework.}
-    As the number of inspiralling binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}} multiple detections of a single binary object are present in the final outputs.
-    Table~\ref{tab:bhbh-details-table} shows some details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages. In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected  parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
+    The difference between lookback and evolution time of a binary was required to be greater than its merger time\footnote{Obtained via LEGWORK framework.}.
+    As the number of inspiralling binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}} multiple detections of a single binary object are present in the final output.
+    Table~\ref{tab:bhbh-details-table} shows selective details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages. In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected  parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
     
     
 	\begin{table*}[!ht]
@@ -276,72 +277,27 @@ CLASSINFOpdf
 		\label{tab:bhbh-details-table}
 	\end{table*}
 
-%    The maximum starting size for the primary star was $\sim$\SI{149.836}{\Msun} with a $\sim$\SI{115.624}{\Msun} companion.
-%    However, the resulting black holes from these two giant stars were only of $\sim$\SI{10.385}{\Msun} and $\sim$\SI{10.395}{\Msun} respectively.
-%
-%    Compared to the $\sim$\SI{10}{\Msun} BHBH pair generated from one of the largest ZAMS pair, the maximum size of the primary black hole in our data set is $\sim$\SI{43.408}{\Msun} with an equal mass companion.
-%    This black hole pair was generated from an equal mass ZAMS pair as well, with starting masses of $\sim$\SI{57.334}{\Msun} each.
+    The predicted distribution of the LISA detectable sources is plotted over its expected sensitivity curve~\cite{Robson2019}, in figure~\ref{fig:alldcosnrplotting}.
+    The x-axis shows the dominant frequency, the frequency accumulating the largest SNR, for the eccentric binaries.
+    Furthermore, on y-axis we plot the amplitude spectral density (ASD), including the contribution from all harmonics.
+    The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$).
+    The size of the points varies with metallicity; high metallic sources have larger shapes and vice versa.
+    The color scheme is based on the eccentricity of detected binaries, e.g, the red ones are the most eccentric sources, the yellow ones are mid-eccentric, and the green ones are the sources with low eccentricities.
 
-%    \subsection{Binary Neutron Stars (NSNS)}
-%    \label{subsec:binary-neutron-stars-(nsns)}
-%
-%    The number of NSNS pair detection per galaxy instance is shown in figure~\ref{fig:nsnsndetections}.
-%    Figure~\ref{fig:nsns_n_galaxy_mean_plot} shows the mean value of selected parameters across the hundred instances of generated MW galaxy.
-%    
-%    For the NSNS pairs, the maximum starting size of the primary star in the data set is $\sim$\SI{54.410}{\Msun} with a companion star of $\sim$\SI{13.760}{\Msun}.
-%    This binary resulted in the formation of NSNS pair of masses, $\sim$\SI{1.614}{\Msun} and $\sim$\SI{1.235}{\Msun} respectively.
-%
-%    In comparison to this binary, the maximum size for primary NS is $\sim$\SI{1.938}{\Msun} with a companion NS of mass $\sim$\SI{1.487}{\Msun}.
-%    The progenitor primary and secondary stars for this binary had masses, $\sim$\SI{14.022}{\Msun} and $\sim$\SI{13.938}{\Msun} respectively.
-%
-%	\subsection{Neutron Star Black Hole pair (NSBH)}
-%    \label{subsec:neutron-star-black-hole-(nsbh)}
-%	
-%	The number of NSBH pair detection per galaxy instance is shown in figure~\ref{fig:nsbhndetections}.
-%	Figure~\ref{fig:nsbh_n_galaxy_mean_plot} shows the mean value of selected parameters across the hundred instances of generated MW galaxy.
-%
-%	For the NSBH pairs, the ZAMS value for the maximum size primary star is $\sim$\SI{53.708}{\Msun} and that of the secondary star is $\sim$\SI{29.613}{\Msun}. The resulting NSBH pair from this system has the following masses, $\sim$\SI{1.439}{\Msun} and $\sim$\SI{15.342}{\Msun}.
-%	
-%	On the other hand, the maximum size NS in the NSBH pair came out to be $\sim$\SI{1.935}{\Msun} and the BH mass was $\sim$\SI{3.824}{\Msun}. The progenitors of this pair have the masses $\sim$\SI{14.090}{\Msun}, and $\sim$\SI{13.959}{\Msun}.
-	
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=\columnwidth]{images/first}
-        \caption{\label{first}Detectable sources' characteristic strain along with dominant frequency in our simulations (Top) is shown on the LISA sensitivity curve as well as their separate types (bottom). The sources are placed based on their eccentricities i.e. Highly eccentric sources are towards the red side while low eccentric sources are on the green side of the spectrum. The reference lines are based on the average eccentricity of our simulations i.e. where in the galaxy an eccentric binary would be assuming an average chirp mass, orientation, and sky location for a remaining inspiral time (vertical lines) and a given distance (diagonal lines). See also figure bla bla for detail understanding.}\label{detect} %--> Fig.1a
-    \end{figure}
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{images/second}
-        \caption{Caption text.}\label{fig:freq} %--> Fig.1b
-    \end{figure}
-
-%	\subsection{Black Hole Neutron Star pairs (BHNS)}
-%	\label{subsec:black-hole-neutron-star-paris-(bhns)}
-
-%	\begin{figure}[!ht]
-%		\centering
-%		\includegraphics[width=0.75\textwidth]{analysis_data/main_analysis_folder/BHNS_n_detections}
-%		\caption{Number of BHNS pair detection per galaxy instance. On average, a total of $\sim$32 pairs per galaxy were detected in this study.}
-%		\label{fig:bhnsndetections}
+	\begin{figure*}[!th]
+		\centering
+		\includegraphics[width=\textwidth]{analysis_data/main_analysis_folder/dco_typewise_snr}
+		\caption{Detectable sources' characteristic strain along with dominant frequency in our simulations is shown on the LISA sensitivity curve. The sources are color-displayed based on their eccentricities, green for low and red for high eccentric sources.}
+		\label{fig:alldcosnrplotting}
+	\end{figure*}
+%	\begin{figure}
+%		\includegraphics[width=\columnwidth]{images/second}
+%		\caption{Caption text.}\label{fig:freq} %--> Fig.1b
 %	\end{figure}
 
-%	The number of NSBH pair detection per galaxy instance is shown in figure~\ref{fig:nsbhndetections}.
-%	Figure~\ref{fig:nsbh_n_galaxy_mean_plot} shows the mean value of selected parameters across the hundred instances of generated MW galaxy.
-%	
-%	For the NSBH pairs, the ZAMS value for the maximum size primary star is $\sim$\SI{53.708}{\Msun} and that of the secondary star is $\sim$\SI{29.613}{\Msun}. The resulting NSBH pair from this system has the following masses, $\sim$\SI{1.439}{\Msun} and $\sim$\SI{15.342}{\Msun}.
-%	
-%	On the other hand, the maximum size NS in the NSBH pair came out to be $\sim$\SI{1.935}{\Msun} and the BH mass was $\sim$\SI{3.824}{\Msun}. The progenitors of this pair have the masses $\sim$\SI{14.090}{\Msun}, and $\sim$\SI{13.959}{\Msun}.
-
-    \subsection{Population of Detectable sources} \label{subsec:r11}
-    The predicted distribution of the LISA detectable sources is plotted over its expected sensitivity curve, containing the galactic double white dwarf population noise~\cite{Robson2019}, in figure~\ref{detect}.
-    The x-axis of the graph is the GW frequency.
-    For the circular binaries in our data, the GW frequency is $2f_\text{orb}$ is the correspondence for the x-axis.
-    We take the dominant frequency, the frequency accumulating the largest SNR, for the eccentric binaries.
-    Furthermore, the y-axis stipulates the amplitude spectral density (ASD), including the contribution from all harmonics.
-
-    The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$). Furthermore, the binaries are shaped based on their type; plus, square, and cross show BHBH, NSBH, and NSNS, respectively.
-    The size of the points varies with metallicity; high metallic sources have larger shapes than low metallic ones.
-    The color scheme for the binaries is based on the eccentricity strength of the detected binaries, shown through a color bar at the bottom left in the plot.
-    For example, the red ones are the most eccentric sources, the yellow ones are mid-eccentric, and the green ones are the sources with low eccentricities.
+	\subsection{Binary Black Hole pairs (BHBH)}
+	\label{subsec:binary-black-hole-pairs-(bhbh)}
+	For the BHBH population, 19 DCO pairs have eccentricity greater than 0.9, and a total of 72 pairs having an eccentricity more than 0.75. 
 
     Around $3\,\text{mHz}$, some binaries mostly have large eccentricities.
     These are on the right side of the graph and extend downwards to $10^{-19}$ ASDs. However, there are also some BHBH that are almost circular and emit at high frequency.

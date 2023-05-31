@@ -17,25 +17,18 @@ import seaborn as sns
 from matplotlib.gridspec import GridSpec
 
 
-def plot_sc_with_grid_lines1(frequency_range, fig, ax, mc_mean, mc_min, ecc, line_scale=1,
-                             line_rot=10, loc=-75):
-    legwork.visualisation.plot_sensitivity_curve(show=False, frequency_range=frequency_range,
-                                                 fig=fig, ax=ax,
-                                                 fill=True)
+def plot_sc_with_grid_lines1(frequency_range, fig, ax, mc_mean, mc_min, ecc, line_scale=1, line_rot=10, loc=-75):
+    legwork.visualisation.plot_sensitivity_curve(show=False, frequency_range=frequency_range, fig=fig, ax=ax, fill=True)
 
     # times = np.logspace(0, -8, 9) * u.Gyr
-    # athings = np.power(4 * legwork.utils.beta(mc_min * 2**(1 / 5), mc_min * 2**(1 / 5)) * times,
-    #                    1 / 4)
-    # freqs = legwork.utils.get_f_orb_from_a(a=athings, m_1=mc_min * 2**(1 / 5),
-    #                                        m_2=mc_min * 2**(1 / 5))
+    # athings = np.power(4 * legwork.utils.beta(mc_min * 2**(1 / 5), mc_min * 2**(1 / 5)) * times, 1 / 4)
+    # freqs = legwork.utils.get_f_orb_from_a(a=athings, m_1=mc_min * 2**(1 / 5), m_2=mc_min * 2**(1 / 5))
     # hide_height = np.sqrt(legwork.psd.lisa_psd(freqs))
-
+    #
     # for i in range(len(times)):
-    #     ax.plot([freqs[i].value, freqs[i].value], [hide_height[i].value, 1e-13], color="grey",
-    #             lw=line_scale, zorder=0,
+    #     ax.plot([freqs[i].value, freqs[i].value], [hide_height[i].value, 1e-13], color="grey", lw=line_scale, zorder=0,
     #             linestyle="dotted")
-    #     ax.annotate(r"$10^{{{0:1.0f}}}$ yr".format(np.log10(times[i].to(u.yr).value)),
-    #                 xy=(freqs[i].value, 7.5e-14),
+    #     ax.annotate(r"$10^{{{0:1.0f}}}$ yr".format(np.log10(times[i].to(u.yr).value)), xy=(freqs[i].value, 7.5e-14),
     #                 va="top", ha="center", rotation=90, fontsize=10 * line_scale, color="grey",
     #                 bbox=dict(boxstyle="round", ec="white", fc="white", pad=0.0))
 
@@ -138,53 +131,26 @@ s_df_bhns.f_dom = s_df_bhns.f_dom.apply(lambda x: x.value)
 s_df_nsbh.f_dom = s_df_nsbh.f_dom.apply(lambda x: x.value)
 s_df_nsns.f_dom = s_df_nsns.f_dom.apply(lambda x: x.value)
 
-fig = plt.figure(figsize=(14, 24))  # , constrained_layout=True)
+f, ax = plt.subplots(2, 2, figsize=(14, 24))  # , constrained_layout=True)
 
-gs = GridSpec(3, 2, figure=fig, height_ratios=(1.5, 1, 1))
-all_ax = fig.add_subplot(gs[0, :])
-axes1 = [fig.add_subplot(gs[1, i]) for i in range(2)]
-axes2 = [fig.add_subplot(gs[2, i]) for i in range(2)]
-
-fig, all_ax = plot_sc_with_grid_lines1(frequency_range, fig=fig, ax=all_ax,
-                                       mc_mean=np.mean(all_mc) * u.Msun,
-                                       mc_min=np.min(all_mc) * u.Msun, ecc=all_ecc, line_rot=12,
-                                       loc=-80)
-
-p = sns.scatterplot(x='f_dom', y='ASD', hue='ecc', data=s_df, ax=all_ax, palette='viridis',
-                    size='Z', sizes=(50, 200),
-                    style='types', markers=['P', 'X', '*', 's'])
 x, w = 0.04, 0.1
 y, height = 0.3, 0.05
-cax = all_ax.inset_axes([x, w, y, height])
-norm = plt.Normalize(s_df['ecc'].min(), s_df['ecc'].max())
-sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
-sm.set_array([])
-all_ax.figure.colorbar(sm, cax=cax, orientation='horizontal')
-handles, labels = p.get_legend_handles_labels()
-p.legend_.remove()
-all_ax.legend(handles[5:], labels[5:], ncol=2, loc='best')
-all_ax.annotate('All DCOs', xy=(2 * x + w, (y - y / 2.) + (height / 2)), xycoords="axes fraction",
-                color="black",
-                ha="center", va="bottom")
 
-_, _ = plot_sc_with_grid_lines1(frequency_range, fig=fig, ax=axes1[0],
-                                mc_mean=np.mean(fid_sources[0]['mc_dco']) * u.Msun,
-                                mc_min=np.min(fid_sources[0]['mc_dco']) * u.Msun,
-                                ecc=fid_sources[0]['e_lisa'],
-                                line_rot=12, loc=-80)
+for x in ax:
+    for x_ in x:
+        lw.visualisation.plot_sensitivity_curve(frequency_range=freq, fig=f, ax=x_)
 
-p = sns.scatterplot(x='f_dom', y='ASD', hue='ecc', data=s_df_bhbh, ax=axes1[0], palette='viridis',
-                    size='Z',
-                    sizes=(50, 200), style=['BHBH'] * len(fid_sources[0]['m1_dco']), markers='P')
-cax = axes1[0].inset_axes([x, w, y, height])
+p = sns.scatterplot(x='f_dom', y='ASD', hue='ecc', data=s_df_bhbh, ax=ax[0][0], palette='RdYlGn_r',
+                    size='Z', markers='P', ec="k", lw=0)
+cax = ax[0][0].inset_axes([x, w, y, height])
 norm = plt.Normalize(s_df_bhbh['ecc'].min(), s_df_bhbh['ecc'].max())
-sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
+sm = plt.cm.ScalarMappable(cmap='RdYlGn_r', norm=norm)
 sm.set_array([])
-axes1[0].figure.colorbar(sm, cax=cax, orientation='horizontal')
+ax[0][0].figure.colorbar(sm, cax=cax, orientation='horizontal')
 handles, labels = p.get_legend_handles_labels()
 p.legend_.remove()
-axes1[0].legend(handles[5:-1], labels[5:-1], loc='best')
-axes1[0].annotate('BHBH', xy=(2 * x + w, (y - y / 2.) + (height / 2)), xycoords="axes fraction",
+ax[0][0].legend(handles[5:-1], labels[5:-1], loc='best')
+ax[0][0].annotate('BHBH', xy=(2 * x + w, (y - y / 2.) + (height / 2)), xycoords="axes fraction",
                   color="black",
                   ha="center", va="bottom")
 
@@ -250,10 +216,10 @@ axes2[1].annotate('NSBH', xy=(2 * x + w, (y - y / 2.) + (height / 2)), xycoords=
                   color="black",
                   ha="center", va="bottom")
 
-all_ax.set_ylim(top=1e-13)
+# all_ax.set_ylim(top=1e-13)
 [i.set_ylim(top=1e-13) for i in axes1]
 [i.set_ylim(top=1e-13) for i in axes2]
 
 plt.tight_layout()
-plt.savefig('fiducial__e_var__4yr.pdf')
-plt.close()
+# plt.savefig('fiducial__e_var__4yr.pdf')
+# plt.close()

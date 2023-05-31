@@ -58,7 +58,7 @@ def average_plotting(dco_type):
     ax[1][1].set_ylabel(r'e$_\mathrm{DCO}$')
 
     __average_plotting('Z', ax[1][2], 'maroon', '')
-    ax[1][2].set_ylabel(r'$\log_{10}$[Z]')
+    ax[1][2].set_ylabel('Z')
 
     __average_plotting('t_evol', ax[2][0], 'y', 'Myr')
     ax[2][0].set_ylabel(r't$_\mathrm{evol}$ [Myr]')
