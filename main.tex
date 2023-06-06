@@ -106,7 +106,9 @@ CLASSINFOpdf
         \item to make a general detection comparison between DCO binaries with and without an initial eccentricity.
     \end{itemize}%
 
-	This research paper is structured as follows, in section~\ref{sec:population_synthesis} we discuss the generation of binary systems using COMPAS suite. In section~\ref{sec:evolution-methodology} we give a general overview of the methodology adopted in this research for evolving the stars from ZAMS to DCOs, from DCOs to merger stage, and their detection by LISA as well. The evolution of binaries and their detection is discussed in section~\ref{sec:evolution-and-detection}.
+	This research paper is structured as follows, in section~\ref{sec:population_synthesis} we discuss the generation of binary systems using COMPAS suite.
+	In section~\ref{sec:evolution-methodology} we give a general overview of the methodology adopted in this research for evolving the stars from ZAMS to DCOs, from DCOs to merger stage, and their detection by LISA as well.
+	The evolution of binaries and their detection is discussed in section~\ref{sec:evolution-and-detection}.
 
     \section{Population synthesis}
     \label{sec:population_synthesis}
@@ -188,7 +190,8 @@ CLASSINFOpdf
         \semaxis{LISA}, \ecc{LISA}, f_{\text{LISA}}
         \label{eq:lisa_parameter_names}
     \end{equation}%
-    The SNR was than calculated by further evolving them for the LISA mission duration of four years. The detection is made based on the signal-to-noise ratio (SNR) of the binary averaged over sky position, polarization, and orientation using the following expression from~\cite{Finn2000},
+    The SNR was than calculated by further evolving them for the LISA mission duration of four years.
+    The detection is made based on the signal-to-noise ratio (SNR) of the binary averaged over sky position, polarization, and orientation using the following expression from~\cite{Finn2000},
     \begin{equation}
     \rho^2 = \sum_{n=1}^{\infty}\int_{f_{n, i}}^{f_{n, f}}\frac{h_{c, n}^2}{f_n^2 S_n(f_n)}\,\text{d}f_n,
     \label{eq:snr_equation}
@@ -233,7 +236,8 @@ CLASSINFOpdf
     These binaries were than checked for their inspiral phase using the $\interval{evolve}$\footnote{Obtained via COMPAS.} and $\interval{lookback}$\footnote{Obtained via galaxy synthesis.}.
     The difference between lookback and evolution time of a binary was required to be greater than its merger time\footnote{Obtained via LEGWORK framework.}.
     As the number of inspiralling binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}} multiple detections of a single binary object are present in the final output.
-    Table~\ref{tab:bhbh-details-table} shows selective details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages. In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected  parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
+    Table~\ref{tab:bhbh-details-table} shows selective details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages.
+    In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected  parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
     
     
 	\begin{table*}[!ht]
