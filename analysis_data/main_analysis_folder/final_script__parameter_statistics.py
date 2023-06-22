@@ -41,11 +41,13 @@ def get_max_min_ZAMS_DCO(df, max_=True):
         m2zams = df[df['Mass@ZAMS(2)'] == max(df['Mass@ZAMS(2)'])]
         m1dco = df[df['Mass@DCO(1)'] == max(df['Mass@DCO(1)'])]
         m2dco = df[df['Mass@DCO(2)'] == max(df['Mass@DCO(2)'])]
+        pars_ = ['maxM1Z', 'maxM2Z', 'maxM1D', 'maxM2D']
     else:
         m1zams = df[df['Mass@ZAMS(1)'] == min(df['Mass@ZAMS(1)'])]
         m2zams = df[df['Mass@ZAMS(2)'] == min(df['Mass@ZAMS(2)'])]
         m1dco = df[df['Mass@DCO(1)'] == min(df['Mass@DCO(1)'])]
         m2dco = df[df['Mass@DCO(2)'] == min(df['Mass@DCO(2)'])]
+        pars_ = ['minM1Z', 'minM2Z', 'minM1D', 'minM2D']
 
     m1zams_ = [round(np.array(m1zams[k])[0], 3) for k in pars]
     m2zams_ = [round(np.array(m2zams[k])[0], 3) for k in pars]
@@ -53,34 +55,34 @@ def get_max_min_ZAMS_DCO(df, max_=True):
     m2dco_ = [round(np.array(m2dco[k])[0], 3) for k in pars]
 
 
-    print('maxM1Z,primary,secondary,primary,secondary')
-    print(m1zams_[0], ',', m1zams_[0], ',', m1zams_[1], ',', m1zams_[2], ',', m1zams_[3])
+    print(f'\n{pars_[0]},primary,secondary,primary,secondary')
+    print(m1zams_[0], '&', m1zams_[0], '&', m1zams_[1], '&', m1zams_[2], '&', m1zams_[3])
 
     print('')
 
-    print('maxM2Z,primary,secondary,primary,secondary')
-    print(m2zams_[1], ',', m2zams_[0], ',', m2zams_[1], ',', m2zams_[2], ',', m2zams_[3])
+    print(f'\n{pars_[1]},primary,secondary,primary,secondary')
+    print(m2zams_[1], '&', m2zams_[0], '&', m2zams_[1], '&', m2zams_[2], '&', m2zams_[3])
 
     print('')
 
-    print('maxM1D,primary,secondary,primary,secondary')
-    print(m1dco_[2], ',', m1dco_[0], ',', m1dco_[1], ',', m1dco_[2], ',', m1dco_[3])
+    print(f'\n{pars_[2]},primary,secondary,primary,secondary')
+    print(m1dco_[2], '&', m1dco_[0], '&', m1dco_[1], '&', m1dco_[2], '&', m1dco_[3])
 
     print('')
 
-    print('maxM2Z,primary,secondary,primary,secondary')
-    print(m2dco_[3], ',', m2dco_[0], ',', m2dco_[1], ',', m2dco_[2], ',', m2dco_[3])
+    print(f'\n{pars_[3]},primary,secondary,primary,secondary')
+    print(m2dco_[3], '&', m2dco_[0], '&', m2dco_[1], '&', m2dco_[2], '&', m2dco_[3])
 
 if __name__ == '__main__':
-    print('\nBHBH\n')
+    print('\nBHBH')
     get_max_min_ZAMS_DCO(df=bhbh)
     get_max_min_ZAMS_DCO(df=bhbh, max_=False)
-    print('\nNSNS\n')
+    print('\nNSNS')
     get_max_min_ZAMS_DCO(df=nsns)
     get_max_min_ZAMS_DCO(df=nsns, max_=False)
-    print('\nBHNS\n')
+    print('\nBHNS')
     get_max_min_ZAMS_DCO(df=bhns)
     get_max_min_ZAMS_DCO(df=bhns, max_=False)
-    print('\nNSBH\n')
+    print('\nNSBH')
     get_max_min_ZAMS_DCO(df=nsbh)
     get_max_min_ZAMS_DCO(df=nsbh, max_=False)

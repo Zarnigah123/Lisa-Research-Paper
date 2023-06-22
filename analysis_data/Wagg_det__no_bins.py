@@ -112,7 +112,7 @@ def make_detectable_dataset(input_filepath, loops, binary_type, t_obs, MW_SIZE=1
     total_MW_weight = np.zeros(loops)
     tot_detect = 0
 
-    for milky_way in range(26, loops):
+    for milky_way in range(loops):
         print(f"number {milky_way + 1}\n")
 
         output_filepath = f"./data/COMPAS_Output_{binary_type}.h5"
@@ -300,4 +300,7 @@ def make_detectable_dataset(input_filepath, loops, binary_type, t_obs, MW_SIZE=1
         os.chdir(cwd)
 
 
+#make_detectable_dataset(input_filepath, loops, 'BHBH', t_obs, MW_SIZE, SNR_CUTOFF)
+make_detectable_dataset(input_filepath, loops, 'NSNS', t_obs, MW_SIZE, SNR_CUTOFF)
+make_detectable_dataset(input_filepath, loops, 'NSBH', t_obs, MW_SIZE, SNR_CUTOFF)
 make_detectable_dataset(input_filepath, loops, 'BHNS', t_obs, MW_SIZE, SNR_CUTOFF)

@@ -17,7 +17,7 @@ def condition(high_value, parameter, key_, secondary_key=None, out=None, low_val
         return parameter[cond]
 
 
-file_path = '/media/astrophysicsandpython/DATA_DRIVE1/ms_project/h5out.h5'
+file_path = '/media/astrophysicsandpython/DATA_DRIVE0/h5out.h5'
 
 h5out = h5.File(file_path)
 
@@ -80,3 +80,9 @@ df = df.sort_values(by='Seed')
 df.reset_index(drop=True, inplace=True)
 
 df.to_csv('./combined_dataset.csv', header=True, index=False)
+
+
+df_merges = df[df.Merges == 1]
+df_merges.reset_index(drop=True, inplace=True)
+
+df_merges.to_csv('./combined_dataset_merged_only.csv', header=True, index=False)

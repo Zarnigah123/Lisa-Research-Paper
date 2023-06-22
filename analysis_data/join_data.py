@@ -18,7 +18,7 @@ keys_ = ['m1_zams', 'm1_dco', 'm2_zams', 'm2_dco', 'm_chirp',
 
 
 def main(file_name):
-    dir_ = f'./new{file_name}'
+    dir_ = f'./new{file_name}0e'
     files = glob.glob(f'{dir_}/*.h5')
     files.sort()
 
@@ -30,7 +30,7 @@ def main(file_name):
 
     h5pd = pd.concat(h5pd_list)
 
-    make_h5(f'{file_name.upper()}.h5', h5pd, keys=keys_)
+    make_h5(f'{file_name.upper()}0e.h5', h5pd, keys=keys_)
 
 
 if __name__ == '__main__':

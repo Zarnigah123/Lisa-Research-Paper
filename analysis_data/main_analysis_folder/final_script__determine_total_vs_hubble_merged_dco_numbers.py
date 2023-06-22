@@ -3,7 +3,7 @@
 import h5py as h5
 import numpy as np
 
-h5out = h5.File('/media/astrophysicsandpython/DATA_DRIVE1/ms_project/h5out.h5')
+h5out = h5.File('/media/astrophysicsandpython/DATA_DRIVE0/h5out.h5')
 
 bse_sys_par = h5out['BSE_System_Parameters.csv']
 bse_dcos = h5out['BSE_Double_Compact_Objects.csv']
