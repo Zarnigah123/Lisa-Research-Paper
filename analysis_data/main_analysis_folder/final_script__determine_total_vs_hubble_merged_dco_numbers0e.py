@@ -3,8 +3,8 @@
 import h5py as h5
 import numpy as np
 
-h5out = h5.File('/media/astrophysicsandpython/DATA_DRIVE0/h5out.h5')
-# h5out = h5.File('/media/astrophysicsandpython/DATA_DRIVE0/h5out0e.h5')
+# h5out = h5.File('/media/astrophysicsandpython/DATA_DRIVE0/h5out.h5')
+h5out = h5.File('/media/astrophysicsandpython/DATA_DRIVE0/h5out0e.h5')
 
 bse_sys_par = h5out['BSE_System_Parameters.csv']
 bse_dcos = h5out['BSE_Double_Compact_Objects.csv']
@@ -56,6 +56,7 @@ bhbh_binaries_all = len(stellar_type_1[dco_mask(14, 14, False)])
 nsns_binaries_all = len(stellar_type_1[dco_mask(13, 13, False)])
 bhns_binaries_all = len(stellar_type_1[dco_mask(14, 13, False)])
 nsbh_binaires_all = len(stellar_type_1[dco_mask(13, 14, False)])
+
 
 def get_percentage(num, den):
     return round((num/den)*100, 2)

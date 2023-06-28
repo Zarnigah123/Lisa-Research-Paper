@@ -20,7 +20,6 @@ def average_plotting(dco_type):
     evolved_['SNR'] = evolved_['SNR'].apply(lambda value_: log10(value_))
     evolved_['SNR_harmonics'] = evolved_['SNR_harmonics'].apply(lambda value_: log10(value_))
 
-
     def __average_plotting(par, axes, color=None, unit=''):
         group_ = evolved_.groupby('galaxy_number')[par]
         mu_ = array(group_.mean().to_list())
@@ -33,8 +32,8 @@ def average_plotting(dco_type):
 
         axes.hlines(y=mean(mu_), xmin=0, xmax=100, color='k', ls='-',
                     label=rf'${round(mean(mu_), 4)}$ {unit}')
-        axes.hlines(y=mean(mu_)+std(mu_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
-        axes.hlines(y=mean(mu_)-std(mu_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
+        axes.hlines(y=mean(mu_) + std(mu_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
+        axes.hlines(y=mean(mu_) - std(mu_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
 
         axes.legend(loc='best')
 
@@ -94,9 +93,9 @@ def average_plotting(dco_type):
     ev_ = evolved_.groupby('galaxy_number').count()['m1_dco']
 
     plt.hlines(y=mean(ev_), xmin=0, xmax=100, color='k', ls='-',
-                label=rf'${round(mean(ev_), 4)}$ detections')
-    plt.hlines(y=mean(ev_)+std(ev_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
-    plt.hlines(y=mean(ev_)-std(ev_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
+               label=rf'${round(mean(ev_), 4)}$ detections')
+    plt.hlines(y=mean(ev_) + std(ev_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
+    plt.hlines(y=mean(ev_) - std(ev_), xmin=0, xmax=100, color='k', ls='--', alpha=0.75)
     plt.legend(loc='best')
     ev_.plot.line(marker='.', ls=line_map[dco_type.lower()], color=col_map[dco_type.lower()],
                   legend=False, zorder=10)

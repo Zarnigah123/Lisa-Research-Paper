@@ -81,7 +81,6 @@ df.reset_index(drop=True, inplace=True)
 
 df.to_csv('./combined_dataset.csv', header=True, index=False)
 
-
 df_merges = df[df.Merges == 1]
 df_merges.reset_index(drop=True, inplace=True)
 

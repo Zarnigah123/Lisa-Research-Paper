@@ -42,7 +42,7 @@ def usage():
     print("  -o, --output          : path to output h5 file                                                              : 'COMPASOutput_testing.h5'")
     print("  -n, --loops           : number of simulations to run                                                        : 10")
     print("  -t, --binary-type     : which binary type to simulation ['BHBH', 'BHNS', 'NSNS']                            : 'BHNS'")
-    print("  -f, --opt-flag        : whether to use the optimistic CE scenario                                           : -")
+    print("  -fig_, --opt-flag        : whether to use the optimistic CE scenario                                           : -")
     print("  -s, --simple-mw       : whether to use the simple MW model                                                  : -")
     print("  -e, --extended-mission: whether to assume an extended (10 yr) LISA mission                                  : -")
     print("  -b, --case-bb-survive : whether to allow case BB systems to survive CE whilst using pessimistic CE scenario : -")
@@ -90,7 +90,7 @@ def main():
             loops = int(value)
         if option in ("-t", "--binary-type"):
             binary_type = value
-        if option in ("-f", "--opt-flag"):
+        if option in ("-fig_", "--opt-flag"):
             pessimistic = False
         if option in ("-s", "--simple-mw"):
             use_simple_mw = True
@@ -300,7 +300,7 @@ def main():
 
         detectable = snr > SNR_CUTOFF
         n_detect = len(snr[detectable])
-        print(f'n_detect={n_detect}')
+        print(fig_'n_detect={n_detect}')
         print(binary_type,n_detect,'Properties')
         n_detect_list[milky_way] = n_detect
 
