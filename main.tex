@@ -441,13 +441,19 @@ CLASSINFOpdf
 	\end{table}%
 	Like the $\aleph_1$ data set, the highest merging rate for $\aleph_2$ comes from BHBH as well ($\sim66.32\%$), followed by BHNS pairs $(\sim65.87\%)$, NSBH $(\sim63.03\%)$ and lastly, NSNS dco type $(\sim51.57\%)$.
 
-	\noindent\textbf{[some context here is needed before we discuss comparison]}
+	\subsection{Effects of eccentricity}	
+	A total of 140 seeds were found common between the two data sets.
+    Out of these 140 seeds, 105 were found to evolve to the same final stage before merging. The binaries with common and diverging final evolutionary stages are shown in figure~\ref{fig:dcotypedivergenceintwodatasets}.
+    The lesser number of diverging cases indicate that the ZAMS eccentricity might not play as much of a bigger role in the evolution of the binaries.
+    
+    \begin{figure*}[!h]%
+    	\centering
+    	\includegraphics[width=\textwidth]{analysis_data/dcotype_divergence_in_two_datasets}
+    	\caption{Plot showing the change in DCO ending states for the common seed numbers from $\aleph_1$ and $\aleph_2$ data sets. The direction of arrows shows the change in the DCO type from $\aleph_1$ and $\aleph_2$ data set. The binaries that didn't change the DCO type after evolution are represented by a filled dot.}
+    	\label{fig:dcotypedivergenceintwodatasets}
+    \end{figure*}%
+    
 	
-	A total of 140 seeds were found common between the two data sets. 
-	
-
-%	As the goal of the study was to see the affect of $\ecc{ZAMS}$ on the binary's evolution, the binaries were again evolved through LEGWORK for another 100 instances of MW galaxy.
-
     \subsection{Detection rates}\label{subsec:detectionetection-rates}
     The prediction for VE is a total of 136 detections in a 4 years LISA mission.
     A decrease in the detection rate is observed for E0 which is detected in a 4 years LISA mission.
@@ -464,8 +470,7 @@ CLASSINFOpdf
 
     \subsection{Model variation: To be added somewhere else,}
     \label{subsec:model_variation}
-    In a number of previous works, $e_\text{ZAMS}$ was taken as zero~\cite{Vigna2018, Barrett2018, Lau2020,
-        Broekgaarden2021, wagg2021gravitational}.
+    In a number of previous works, $e_\text{ZAMS}$ was taken as zero~\cite{Vigna2018, Barrett2018, Lau2020, Broekgaarden2021, wagg2021gravitational}.
     The main reason for this assumption is that they argue that eccentricity at ZAMS is not likely critical for predicting detection rates as they deal with post-interaction binaries and their orbital eccentricities become zero after mass transfer~\cite{Hurley2002}. %, de2015merger}).
     To test the accuracy of this assumption, we simulate another population with the same parameters.
     The only change is that $e_\text{ZAMS}$ of the binaries is left to be varied by the COMPAS suite.
