@@ -294,6 +294,41 @@ CLASSINFOpdf
     The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$).
     The size of the points varies with metallicity; high metallic sources have larger shapes and vice versa.
     The color scheme is based on the eccentricity of detected binaries, e.g, the red ones are the most eccentric sources, the yellow ones are mid-eccentric, and the green ones are the sources with low eccentricities.
+    
+    \begin{figure*}[!h]
+    	\centering
+    	\includegraphics[width=\textwidth]{analysis_data/dco_fdom_ecc_details}
+    	\caption{Plot showing the kernel density estimation of different DCO types for the dominant frequency emitted by the binary, characterized by the eccentricity of their orbits. The inset bar plot show the number of binaries associated with the given eccentricity plotted in log scale. The number inside the bars show the actual number of binaries for the given eccentricity. The log scaling was chosen due to relative lower number of DCOs in NSNS and BHNS types.}
+    	\label{fig:dcofdomeccdetails}
+    \end{figure*}
+
+    Majority of the binary population for all DCO types has a dominant frequency less than \SI{1e-3}{\hertz}.
+    The main reason for such a trend can be explained through the eccentricities of the binaries.
+    As seen from the figure~\ref{fig:alldcosnrplotting}, a large population of our binaries are low eccentric or mid-eccentric.
+    There are also binaries having high eccentricities which as mentioned above lie on the right side of the graph.
+    The orbit of low eccentric or circular binaries evolves differently than high eccentric binaries.
+    After the formation of DCO, most of the low eccentric binaries emit GW in low-frequency bands of LISA as the orbit progresses.
+    While DCOs with high eccentricities behave in a completely different way, i.e.\ their orbit decay faster, and they tend to emit GW in the high-frequency LISA detection band~\cite{Peters1963, Peters1964}.
+    Although these are of prime importance in the LISA mission, unfortunately, these are rare.
+    Thus, most of the DCOs are at lower frequency regions.
+    
+    Fig.~\ref{fig:freq} shows the distribution of the orbital frequency; $f$, and eccentricity at the time of LISA mission; $e$.
+    The regions surrounding the individual graphs are the $1\,\sigma$, and $2\,\sigma$ uncertainties which are the variations of the results over 100 random instances of our galaxy.
+    We plot this figure using the bootstrapping function~\cite{wagg2021gravitational}.
+    The left side of the graph is the orbital frequency distribution.
+    It shows peaks of different types of sources i.e. \textbf{0.3mHz, 0.7mHz, 0.99} for BHBH, NSNS, and NSBH\@.
+    The reason for such a trend is because of the mass difference as higher mass DCO The distribution is a little negatively skewed.
+    As mentioned above, a higher mass DCO at the same distance and eccentricity requires a lower frequency to produce the same signal-to-noise ratio and thus be detected.
+    The orbital frequency distributions for BHBHs, BHNSs, and NSNSs (figure, 3a) peak at progressively increasing
+    frequencies as mentioned in section 3.1.
+    The distributions appear nearly symmetric, but closer inspections show that the left-hand side is more populated, which can be seen most clearly in the curve for the BHBHs.
+    This is due to the contribution of highly eccentric binaries, which are most abundant in the BHBH population.
+    These systems are still detectable by LISA, despite their low orbital frequency, as the high eccentricity means that the majority of the GW signal is emitted at higher harmonics, where LISA is more sensitive.
+    
+    We can also observe the peaks for high chirp mass systems have peaks in the low-frequency detection region, as they emit the waves in lower frequency.
+    Hence, this is another way to differentiate sources.
+    Hence, the BHBH pairs have the most eccentric pairs having the highest average eccentricity and $\langle M_c\rangle$.
+    
 
     Figure~\ref{fig:dcotypemwcomponentdistributioncropped} shows the percentage of different DCOs detected in the \lowalpha, \highalpha and bulge components of the MW instances.
 %    In every component, the majority of detections come from BBH pairs.
@@ -334,34 +369,6 @@ CLASSINFOpdf
 %    Around $3\,\text{mHz}$, some binaries mostly have large eccentricities.
 %    These are on the right side of the graph and extend downwards to $10^{-19}$ ASDs. However, there are also some BHBH that are almost circular and emit at high frequency.
 %    These sources are in their last stages of merger hence they are spinning fast enough to emit large frequency GW\@.
-
-    The major binary population is concentrated on the left side of the LISA sensitivity curve.
-    The peak of concentration around the GW frequency of \textbf{0.12 mHz}.
-    The main reason for such a trend can be explained through the eccentricities of the binaries.
-    As seen from the figure~\ref{detect}, a large population of our binaries are low eccentric or mid-eccentric.
-    There are also binaries having high eccentricities which as mentioned above lie on the right side of the graph.
-    The orbit of low eccentric or circular binaries evolves differently than high eccentric binaries.
-    After the formation of DCO, most of the low eccentric binaries emit GW in low-frequency bands of LISA as the orbit progresses.
-    While DCOs with high eccentricities behave in a completely different way, i.e.\ their orbit decay faster, and they tend to emit GW in the high-frequency LISA detection band.
-    Although these are of prime importance in the LISA mission, unfortunately, these are rare.
-    Thus, most of the DCOs are at lower frequency regions.
-
-    Fig.~\ref{fig:freq} shows the distribution of the orbital frequency; $f$, and eccentricity at the time of LISA mission; $e$.
-    The regions surrounding the individual graphs are the $1\,\sigma$, and $2\,\sigma$ uncertainties which are the variations of the results over 100 random instances of our galaxy.
-    We plot this figure using the bootstrapping function~\cite{wagg2021gravitational}.
-    The left side of the graph is the orbital frequency distribution.
-    It shows peaks of different types of sources i.e. \textbf{0.3mHz, 0.7mHz, 0.99} for BHBH, NSNS, and NSBH\@.
-    The reason for such a trend is because of the mass difference as higher mass DCO The distribution is a little negatively skewed.
-    As mentioned above, a higher mass DCO at the same distance and eccentricity requires a lower frequency to produce the same signal-to-noise ratio and thus be detected.
-    The orbital frequency distributions for BHBHs, BHNSs, and NSNSs (figure, 3a) peak at progressively increasing
-    frequencies as mentioned in section 3.1.
-    The distributions appear nearly symmetric, but closer inspections show that the left-hand side is more populated, which can be seen most clearly in the curve for the BHBHs.
-    This is due to the contribution of highly eccentric binaries, which are most abundant in the BHBH population.
-    These systems are still detectable by LISA, despite their low orbital frequency, as the high eccentricity means that the majority of the GW signal is emitted at higher harmonics, where LISA is more sensitive.
-
-    We can also observe the peaks for high chirp mass systems have peaks in the low-frequency detection region, as they emit the waves in lower frequency.
-    Hence, this is another way to differentiate sources.
-    Hence, the BHBH pairs have the most eccentric pairs having the highest average eccentricity and $\langle M_c\rangle$.
 
 %    \subsection{Detections in Components}\label{subsec:detectionetections-in-components}
 %    Our simulated galaxy comprises three components; Low $\alpha$ disc, High $\alpha$ disc, and Bulge.
@@ -441,9 +448,11 @@ CLASSINFOpdf
 	\end{table}%
 	Like the $\aleph_1$ data set, the highest merging rate for $\aleph_2$ comes from BHBH as well ($\sim66.32\%$), followed by BHNS pairs $(\sim65.87\%)$, NSBH $(\sim63.03\%)$ and lastly, NSNS dco type $(\sim51.57\%)$.
 
-	\subsection{Effects of eccentricity}	
-	A total of 140 seeds were found common between the two data sets.
-    Out of these 140 seeds, 105 were found to evolve to the same final stage before merging. The binaries with common and diverging final evolutionary stages are shown in figure~\ref{fig:dcotypedivergenceintwodatasets}.
+	\subsection{Effects of eccentricity}
+    \label{subsec:effects-of-eccentricity}
+    A total of 140 seeds were found common between the two data sets.
+    Out of these 140 seeds, 105 were found to evolve to the same final stage before merging.
+    The binaries with common and diverging final evolutionary stages are shown in figure~\ref{fig:dcotypedivergenceintwodatasets}.
     The lesser number of diverging cases indicate that the ZAMS eccentricity might not play as much of a bigger role in the evolution of the binaries.
     
     \begin{figure*}[!h]%
