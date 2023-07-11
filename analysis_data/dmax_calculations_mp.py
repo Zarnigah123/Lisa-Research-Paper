@@ -4,7 +4,6 @@ Created on Fri Dec 31 11:23:31 2021
 @author: syedalimohsinbukhari
 """
 
-import time
 import numpy as np
 import pandas as pd
 
@@ -24,14 +23,15 @@ nsns_df.reset_index(drop=True, inplace=True)
 nsbh_df.reset_index(drop=True, inplace=True)
 bhns_df.reset_index(drop=True, inplace=True)
 
-d_bhbh = GetDMax(bhbh_df, n_proc=3).run(gal)
-np.save('BHBH_maxdist', d_bhbh)
+if __name__ == '__main__':
+    d_bhbh = GetDMax(bhbh_df, n_proc=10).run(gal)
+    np.save('BHBH_maxdist', d_bhbh)
 
-d_nsns = GetDMax(nsns_df, n_proc=3).run(gal)
-np.save('NSNS_maxdist', d_nsns)
+    d_nsns = GetDMax(nsns_df, n_proc=10).run(gal)
+    np.save('NSNS_maxdist', d_nsns)
 
-d_nsbh = GetDMax(nsbh_df, n_proc=3).run(gal)
-np.save('NSBH_maxdist', d_nsbh)
+    d_nsbh = GetDMax(nsbh_df, n_proc=10).run(gal)
+    np.save('NSBH_maxdist', d_nsbh)
 
-d_bhns = GetDMax(bhns_df, n_proc=3).run(gal)
-np.save('BHNS_maxdist', d_bhns)
+    d_bhns = GetDMax(bhns_df, n_proc=10).run(gal)
+    np.save('BHNS_maxdist', d_bhns)

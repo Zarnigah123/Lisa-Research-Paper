@@ -75,6 +75,8 @@ def seaborn_plot(df_, axes, title, log_scale=(True, False)):
     axes.set_xlabel('Dominant Frequency [Hz]')
     axes.set_title(title)
 
+    sns.move_legend(p, 'upper left')
+
 def get_ecc_type(df_):
     df = df_.copy()
     df['Eccentricity'] = [labels_[0] if i <= 0.1
