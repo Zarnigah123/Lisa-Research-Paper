@@ -51,7 +51,7 @@ all_f = np.concatenate([i['freq'] for i in fid_sources])
 _types = [[dco_types[i]] * len(v['m1_dco']) for i, v in enumerate(fid_sources)]
 all_types = np.concatenate([i for i in _types])
 
-s_df = pd.DataFrame([all_f_dom.value, all_asd.to(u.Hz ** -0.5).value, all_ecc, all_Z, all_types,
+s_df = pd.DataFrame([all_f_dom.value, all_asd.to(u.Hz**-0.5).value, all_ecc, all_Z, all_types,
                      all_snr]).T
 s_df.columns = ['f_dom', 'ASD', 'ecc', 'Z', 'types', 'SNR']
 
@@ -96,7 +96,7 @@ for x_ in ax:
 
 def make_scatter_plot(df, dco_type, marker, axes):
     p_ = sns.scatterplot(data=df, x='f_dom', y='ASD', hue='ecc', size='Z', marker=marker,
-                          palette='RdYlGn_r', ax=axes, lw=0, ec="k")
+                         palette='RdYlGn_r', ax=axes, lw=0, ec="k")
     cax = axes.inset_axes([x, w, y, height])
     norm = plt.Normalize(df['ecc'].min(), df['ecc'].max())
     sm = plt.cm.ScalarMappable(cmap='RdYlGn_r', norm=norm)

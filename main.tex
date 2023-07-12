@@ -72,11 +72,11 @@ CLASSINFOpdf
         The double compact objects (DCOs) present a broad range of possible GW detections in our MW galaxy. Here we present a case study on the detection of DCOs with progenitors having high metallic content. Furthermore, the effects of eccentricity on the ZAMS stage on the evolution of binaries is also checked via a comparative analysis for two identical data sets. The binaries were generated using the Compact Object Mergers: Population Astrophysics and Statistics (COMPAS) suite, followed by their distribution in a metallicity$-$age dependent Milky Way galaxy model.
         
         For a 4-year LISA mission, this study predicts a detection rate between 79-127(86-131) detections for data sets with variable ZAMS and zero ZAMS eccentricity respectively. Out of these, 21-45(17-36) are BHBHs, 17-44(17-38) are NSNSs, 6-28(11-29) are BHNSs and 13-39(21-46) are NSBHs.
-        %NSBH were considered separate from BHNS as it indicates that the primary star in the binary ended up as a NS instead of a BH.
-        It was also observed that the DCOs end up in different end stages with some of the binaries detected in both data sets.
+        NSBH were considered separate from BHNS as the stellar evolution indicates that the primary star in the binary ended up as a NS instead of a BH.
+        It was also observed that some common binaries end up in different DCO stages in both data sets.
 	\end{abstract}
     \begin{IEEEkeywords}
-        Cobb-Douglas Habitability Score, Exoplanets, Habitability, Habitable zone, Convex Optimization, Duality.
+        Gravitational waves, gravitational wave detectors, black holes, neutron stars, double compact objects
     \end{IEEEkeywords}
 
 %    \linenumbers
@@ -104,11 +104,13 @@ CLASSINFOpdf
     The detections of these sources will provide us with a better understanding of not only the evolution phases but also the endpoints of stellar evolution.
 
     The goals of this research are,
-    \begin{itemize}%
+    \begin{enumerate}%
         \item to predict the number of DCO binaries that can be detected via LISA in our Milky Way galaxy,
-        \item to determine whether extra galactic sources are LISA detectable,
+        \begin{enumerate}
+	        \item to determine whether extra galactic sources are LISA detectable,
+        \end{enumerate}
         \item to make a general detection comparison between DCO binaries with and without an initial eccentricity.
-    \end{itemize}%
+    \end{enumerate}%
 
     This research paper is structured as follows, in section~\ref{sec:population_synthesis} we discuss the generation of binary systems using COMPAS suite.
     In section~\ref{sec:evolution-methodology} we give a general overview of the methodology adopted in this research for evolving the stars from ZAMS to DCOs, from DCOs to merger stage, and their detection by LISA as well.
@@ -214,8 +216,7 @@ CLASSINFOpdf
     After running the simulations as outlined in section~\ref{sec:population_synthesis}, we obtained 12254 DCOs ($\sim0.12254\%$).
     Following section~\ref{sec:evolution-methodology}, we obtain the required parameter values of only 6539 DCOs that merged within Hubble time ($\sim$53.3622\%) thus making them a potential LISA source.\footnote{Overall, only $\sim$0.06539\% binary system formed into DCOs that merge within Hubble time.}
     The Hubble time merge rate of DCOs is given in table~\ref{tab:dco_details},
-
-    \begin{table}[!ht]
+    \begin{table}[!ht]%
         \centering
 %        \resizebox{\columnwidth}{!}{
         \begin{tabular}{@{}cccc@{}}
@@ -297,7 +298,7 @@ CLASSINFOpdf
     Furthermore, on y-axis we plot the amplitude spectral density (ASD), including the contribution from all harmonics.
     The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$).
     The size of the points varies with metallicity; high metallic sources have larger shapes and vice versa.
-    The color scheme is based on the eccentricity of detected binaries, e.g, the red ones are the most eccentric sources, the yellow ones are mid-eccentric, and the green ones are the sources with low eccentricities.
+    The color scheme is based on the eccentricity of detected binaries, e.g, the red ones are the highly eccentric ($\ecc{DCO} > 0.9$), the yellow ones are mid-eccentric ($0.1 < \ecc{DCO} \leq 0.9$), and the green ones are the sources with low eccentricities ($\ecc{DCO} \leq 0.1$).
     
     \begin{figure*}[!h]
     	\centering
