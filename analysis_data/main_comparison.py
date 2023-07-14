@@ -41,69 +41,72 @@ dco_type_df['df0e_T'] = [0 if i == 'BHBH' else 1 if i == 'NSNS' else 2 if i == '
 
 
 def draw_arrows(a, b, axes):
-    axes.arrow(a[0], a[1], b[0] - a[0], b[1] - a[1], head_width=1, head_length=0.1,
-               length_includes_head=True, color='k', zorder=2)
+    axes.arrow(a[0], a[1], b[0] - a[0], b[1] - a[1], head_width=1, head_length=0.1, length_includes_head=True,
+               color='k', zorder=2)
 
 
-f, ax = plt.subplots(1, 1, figsize=(20, 4))
-ax.grid('on', zorder=-10, ls='--')
-[draw_arrows([1 + k, i], [1 + k, j], ax) for i, j, k in
- zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
-[plt.plot([1 + k, 1 + k], [i, j], 'k.', zorder=5) if i == j else plt.plot(1 + k, i, 'k.', zorder=5)
- for i, j, k in zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
+# fig, ax = plt.subplots(1, 1, figsize=(20, 4))
+# ax.grid('on', zorder=-10, ls='--')
+# [draw_arrows([1 + k, i], [1 + k, j], ax) for i, j, k in
+#  zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
+# [plt.plot([1 + k, 1 + k], [i, j], 'k.', zorder=5) if i == j else plt.plot(1 + k, i, 'k.', zorder=5)
+#  for i, j, k in zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
 
-ax.set_title(r'Divergence of final DCO type in $\aleph_1$ and $\aleph_2$ data sets')
-ax.set_yticklabels(['', 'BHBH', '', 'NSNS', '', 'NSBH', '', 'BHNS'])
-plt.tight_layout()
+# ax.set_title(r'Divergence of final DCO type in $\aleph_1$ and $\aleph_2$ data sets')
+# ax.set_yticklabels(['', 'BHBH', '', 'NSNS', '', 'NSBH', '', 'BHNS'])
+# plt.tight_layout()
 
-[plt.savefig(f'dco_type_divergence_in_two_datasets.{i}') for i in ['pdf', 'png']]
-plt.close()
+# [plt.savefig(f'dco_type_divergence_in_two_datasets.{i}') for i in ['pdf', 'png']]
+# plt.close()
+
 
 ##################################################################################################
-def get_dco_type(df_, dco_type):
-    df = df_[df_['dco_type'] == dco_type]
-    df.reset_index(drop=True, inplace=True)
+def get_dco_type(data_frame, dco_type):
+    temp_ = data_frame[data_frame['dco_type'] == dco_type]
+    temp_.reset_index(drop=True, inplace=True)
 
-    return df
-
-labels_ = [r'e$_\mathrm{DCO} \leq 0.1$', r'$0.25 <$ e$_\mathrm{DCO} \leq 0.9$',
-           r'$0.9 <$ e$_\mathrm{DCO}$']
+    return temp_
 
 
-def seaborn_plot(df_, axes, title, log_scale=(True, False)):
-    p = sns.kdeplot(data=df_, x=df_['f_orb'] * df_['SNR_harmonics'], hue='Eccentricity', log_scale=log_scale, ax=axes, hue_order=labels_, palette=['g', 'y', 'r'], fill=True, common_norm=False, common_grid=False, legend=True)
+labels_ = [r'e$_\mathrm{DCO} \leq 0.1$', r'$0.25 <$ e$_\mathrm{DCO} \leq 0.9$', r'$0.9 <$ e$_\mathrm{DCO}$']
+
+
+def seaborn_plot(data_frame, axes, title, log_scale=(True, False)):
+    p = sns.histplot(data_frame, x=data_frame['f_orb'] * data_frame['SNR_harmonics'], hue='Eccentricity',
+                     bins=32, common_norm=True, common_bins=True, element='step', log_scale=(True, True),
+                     hue_order=labels_, palette=['g', 'y', 'r'], ax=axes)
     axes.set_xlabel('Dominant Frequency [Hz]')
     axes.set_title(title)
 
     sns.move_legend(p, 'upper left')
 
-def get_ecc_type(df_):
-    df = df_.copy()
-    df['Eccentricity'] = [labels_[0] if i <= 0.1
-                          else labels_[1] if 0.1 < i <= 0.9
-                          else labels_[2]
-                          for i in df['e_dco']]
 
-    df.reset_index(drop=True, inplace=True)
+def get_ecc_type(data_frame):
+    temp_ = data_frame.copy()
+    temp_['Eccentricity'] = [labels_[0] if i <= 0.1 else labels_[1] if 0.1 < i <= 0.9 else labels_[2]
+                             for i in temp_['e_dco']]
 
-    return df
+    temp_.reset_index(drop=True, inplace=True)
 
-def get_ecc_proportion(df, low=0.1, high = 0.9):
-    p1 = sum(df['e_dco'] < low)
-    p2 = sum(np.logical_and(low < df['e_dco'], df['e_dco'] <= high))
-    p3 = sum(df['e_dco'] > high)
+    return temp_
+
+
+def get_ecc_proportion(data_frame, low=0.1, high=0.9):
+    p1 = sum(data_frame['e_dco'] < low)
+    p2 = sum(np.logical_and(low < data_frame['e_dco'], data_frame['e_dco'] <= high))
+    p3 = sum(data_frame['e_dco'] > high)
 
     return p1, p2, p3
 
 
-df2 = get_ecc_type(df_ = df)
+df2 = get_ecc_type(data_frame=df)
 
 df_bhbh = get_dco_type(df2, 'BHBH')
 df_nsns = get_dco_type(df2, 'NSNS')
 df_nsbh = get_dco_type(df2, 'NSBH')
 df_bhns = get_dco_type(df2, 'BHNS')
 
-f, ax = plt.subplots(2, 2, figsize=(12, 8))
+fig, ax = plt.subplots(2, 2, figsize=(12, 8))
 
 bhbh_proportions = get_ecc_proportion(df_bhbh)
 nsns_proportions = get_ecc_proportion(df_nsns)
@@ -111,35 +114,33 @@ nsbh_proportions = get_ecc_proportion(df_nsbh)
 bhns_proportions = get_ecc_proportion(df_bhns)
 
 seaborn_plot(df_bhbh, axes=ax[0][0], title='BHBH')
-ax[0][0].set_xlim([1e-7, 1e-1])
+ax[0][0].set_xlim([1e-7, 1e-2])
 seaborn_plot(df_nsns, axes=ax[0][1], title='NSNS')
-ax[0][1].set_xlim([1e-7, 1e-1])
+ax[0][1].set_xlim([1e-6, 1e-2])
 seaborn_plot(df_bhns, axes=ax[1][0], title='BHNS')
-ax[1][0].set_xlim([1e-7, 1e-1])
+ax[1][0].set_xlim([1e-7, 1e-2])
 seaborn_plot(df_nsbh, axes=ax[1][1], title='NSBH')
-ax[1][1].set_xlim([1e-7, 1e-1])
+ax[1][1].set_xlim([1e-6, 1e-2])
 
 
-def plot_inset(axes, df):
-    axins = axes.inset_axes(bounds=(0.1, 0.1, 0.35, 0.5))
-    axins.set_ylabel('Log[N]')
-    # axins.set_yticklabels([])
+def plot_inset(axes, data_frame):
+    ax_ins = axes.inset_axes(bounds=(0.1, 0.05, 0.4, 0.5))
+    ax_ins.set_ylabel('Log[N]')
 
-    axins.bar(x=range(0, 3), height=np.log10(df), color=['g', 'y', 'r'], alpha=0.25, ec='k')
-    [axins.text(i, v - 0.5, str(f'{10**v:.0f}'),
-                horizontalalignment='center', verticalalignment='center')
-     for i, v in enumerate(np.log10(df))]
+    ax_ins.bar(x=range(0, 3), height=np.log10(data_frame), color=['g', 'y', 'r'], alpha=0.25, ec='k')
+    [ax_ins.text(i, v - 0.5, str(f'{10 ** v:.0f}'), horizontalalignment='center', verticalalignment='center')
+     for i, v in enumerate(np.log10(data_frame))]
     # taken from https://stackoverflow.com/a/12998531
-    axins.tick_params('x', which='both', bottom=False, top=False, labelbottom=False)
-    # plt.tight_layout()
+    ax_ins.tick_params('x', which='both', bottom=False, top=False, labelbottom=False)
+    plt.tight_layout()
 
 
-plot_inset(ax[0][0], bhbh_proportions)
-plot_inset(ax[0][1], nsns_proportions)
-plot_inset(ax[1][0], bhns_proportions)
-plot_inset(ax[1][1], nsbh_proportions)
+plot_inset(axes=ax[0][0], data_frame=bhbh_proportions)
+plot_inset(axes=ax[0][1], data_frame=nsns_proportions)
+plot_inset(axes=ax[1][0], data_frame=bhns_proportions)
+plot_inset(axes=ax[1][1], data_frame=nsbh_proportions)
 
 plt.tight_layout()
-plt.savefig('dco_fdom_ecc_details.pdf')
-plt.savefig('dco_fdom_ecc_details.png')
-plt.close()
+# plt.savefig('dco_fdom_ecc_details.pdf')
+# plt.savefig('dco_fdom_ecc_details.png')
+# plt.close()

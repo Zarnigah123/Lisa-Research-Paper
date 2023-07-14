@@ -299,7 +299,7 @@ CLASSINFOpdf
     The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$).
     The size of the points varies with metallicity; high metallic sources have larger shapes and vice versa.
     The color scheme is based on the eccentricity of detected binaries, e.g, the red ones are the highly eccentric ($\ecc{DCO} > 0.9$), the yellow ones are mid-eccentric ($0.1 < \ecc{DCO} \leq 0.9$), and the green ones are the sources with low eccentricities ($\ecc{DCO} \leq 0.1$).
-    
+	
     \begin{figure*}[!h]
     	\centering
     	\includegraphics[width=\textwidth]{analysis_data/dco_fdom_ecc_details}
@@ -307,9 +307,9 @@ CLASSINFOpdf
     	\label{fig:dcofdomeccdetails}
     \end{figure*}
 
-    Majority of the binary population for all DCO types has a dominant frequency less than \SI{1e-3}{\hertz}.
+    Majority of the binary population for all DCO types has a dominant frequency less than $\sim$\SI{2e-3}{\hertz}, (see figure~\ref{fig:dcofdomeccdetails}).
     The main reason for such a trend can be explained through the eccentricities of the binaries.
-    As seen from the figure~\ref{fig:alldcosnrplotting} and~\ref{fig:dcofdomeccdetails}, a large portion of our binaries is either low or mid-eccentric.
+    As seen from the figure~\ref{fig:dcofdomeccdetails}, a large portion of our binaries is either low or mid-eccentric.
     The orbit of low eccentric or circular binaries evolves differently than high eccentric binaries.
     After the formation of DCO, most of the low eccentric binaries emit GW in low-frequency bands of LISA as the orbit progresses.
     While DCOs with high eccentricities behave in a completely different way, i.e.\ their orbit decay faster, and they tend to emit GW in the high-frequency LISA detection band~\cite{Peters1963, Peters1964}.
@@ -323,8 +323,7 @@ CLASSINFOpdf
     It shows peaks of different types of sources i.e. \textbf{0.3mHz, 0.7mHz, 0.99} for BHBH, NSNS, and NSBH\@.
     The reason for such a trend is because of the mass difference as higher mass DCO The distribution is a little negatively skewed.
     As mentioned above, a higher mass DCO at the same distance and eccentricity requires a lower frequency to produce the same signal-to-noise ratio and thus be detected.
-    The orbital frequency distributions for BHBHs, BHNSs, and NSNSs (figure, 3a) peak at progressively increasing
-    frequencies as mentioned in section 3.1.
+    The orbital frequency distributions for BHBHs, BHNSs, and NSNSs (figure, 3a) peak at progressively increasing frequencies as mentioned in section 3.1.
     The distributions appear nearly symmetric, but closer inspections show that the left-hand side is more populated, which can be seen most clearly in the curve for the BHBHs.
     This is due to the contribution of highly eccentric binaries, which are most abundant in the BHBH population.
     These systems are still detectable by LISA, despite their low orbital frequency, as the high eccentricity means that the majority of the GW signal is emitted at higher harmonics, where LISA is more sensitive.
@@ -390,8 +389,8 @@ CLASSINFOpdf
 %    \end{figure}
 
     \subsection{Maximum distance}\label{subsec:maximum-distance}
-    For each DCO, there is a horizon distance i.e., the maximum distance up to which the DCO may be detectable in
-    LISA. This is calculated using the inverse relationship between SNR ($\rho$) and distance~\cite{Lau2020},
+    For each DCO, there is a horizon distance i.e., the maximum distance up to which the DCO may be detectable in LISA. 
+    This is calculated using the inverse relationship between SNR ($\rho$) and distance~\cite{Lau2020},
     \begin{equation}
         \label{eq:eq1}
         d_\text{max}=\frac{\rho(d\,=\,1\,\text{kpc})}{\rho_\text{min}}
@@ -413,7 +412,6 @@ CLASSINFOpdf
     The red dotted lines illustrate some known galaxies to have a better understanding of distances.
     Hence, BHBH can be discovered as far as Hoag's Object, NSNS in M31, and both BHNS and NSBH are far from M31 but much below Hoag's Object.
 
-
     Almost all the highest values of average $d_{\max}$ of four types are around a \textbf{certain frequency} i.e., if a source has \textbf{certain orbital frequency} then it can be detected to its maximum detection distance.
     It can be observed through the LISA overlay that this frequency lies in the area where the detector is most sensitive.
     Hence, if a source emits in the frequency region of the highest sensitivity of LISA, then it will be detected at a maximum distance.
@@ -425,7 +423,6 @@ CLASSINFOpdf
         shown through a black line while the blue line shows the overlaid LISA sensitivity curve}
         \label{fig:dmax}
     \end{figure}
-
 
     \section{Comparative analysis}
     \label{sec:comparative-analysis}

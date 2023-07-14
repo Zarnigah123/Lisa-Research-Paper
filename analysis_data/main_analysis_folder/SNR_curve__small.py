@@ -51,9 +51,9 @@ all_f = np.concatenate([i['freq'] for i in fid_sources])
 _types = [[dco_types[i]] * len(v['m1_dco']) for i, v in enumerate(fid_sources)]
 all_types = np.concatenate([i for i in _types])
 
-s_df = pd.DataFrame([all_f_dom.value, all_asd.to(u.Hz**-0.5).value, all_ecc, all_Z, all_types,
+s_df = pd.DataFrame([all_f_dom.value, all_asd.to(u.Hz**-0.5).value, all_f.value, all_ecc, all_Z, all_types,
                      all_snr]).T
-s_df.columns = ['f_dom', 'ASD', 'ecc', 'Z', 'types', 'SNR']
+s_df.columns = ['f_dom', 'ASD', 'f_orb', 'ecc', 'Z', 'types', 'SNR']
 
 # separate the dataframe
 s_df_bhbh = s_df[s_df.types == 'BHBH']

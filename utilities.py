@@ -7,5 +7,6 @@ std_ = pd.read_csv('./bhbh_std.csv')
 
 mean2_ = mean_
 
+
 def new_cols(column_name):
     mean2_[column_name] = '$' + mean_[column_name].apply(str) + '\pm' + std_[column_name].apply(str) + '$'

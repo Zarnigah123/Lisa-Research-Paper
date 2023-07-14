@@ -12,9 +12,9 @@ df.reset_index(drop=True, inplace=True)
 df0e = df0e.sort_values(by='seed')
 df0e.reset_index(drop=True, inplace=True)
 
+
 def get_n_detection_array(data_frame, dco_type='all'):
-    if dco_type in ['BHBH', 'NSNS', 'NSBH', 'BHNS',
-                    'BHBH0e', 'NSNS0e', 'NSBH0e', 'BHNS0e']:
+    if dco_type in ['BHBH', 'NSNS', 'NSBH', 'BHNS', 'BHBH0e', 'NSNS0e', 'NSBH0e', 'BHNS0e']:
         df_ = data_frame[data_frame.dco_type == dco_type]
         df_.reset_index(inplace=True, drop=True)
     else:
@@ -22,6 +22,7 @@ def get_n_detection_array(data_frame, dco_type='all'):
 
     return np.array([len(np.unique(df_[df_.galaxy_number == i].seed))
                      for i in range(1, 101)])
+
 
 def get_min_max(data_frame, df_type):
     return f'{df_type} :: min: {data_frame.min()}, max: {data_frame.max()}'
