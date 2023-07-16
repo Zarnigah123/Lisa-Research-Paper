@@ -13,42 +13,34 @@ import numpy as np
 
 class GetDMax:
 
-    def __init__(self, df, n_proc=3, chunk_size=10):
+    def __init__(self, df, n_proc=3):
         self.df = df
-        self.chunk_size = chunk_size
+        self.chunk_size = n_proc
         self.n_proc = n_proc
 
         self.f_orb = np.logspace(np.log10(1e-5), np.log10(1), 100) * u.Hz
 
-    def __df_to_array(self, gal_number):
-        _temp = self.df[self.df.galaxy_number.isin(gal_number)]
-        _temp = _temp[['m1_dco', 'm2_dco', 'e_dco', 'seed']]
-        print('')
-        return np.array(_temp)
+    def __df_to_array(self):
+        return np.array(self.df[['m1_dco', 'm2_dco', 'e_dco', 'seed']])
 
     @staticmethod
     def __get_chunks(par):
         array, chunk_size = par
         return [array[i:i + chunk_size] for i in range(0, len(array), chunk_size)]
 
-    def _get_d_max(self, array):
+    def claculate_d_max(self, array):
         _len = len(self.f_orb)
-        return [[legwork.source.Source(m_1=[i[0]] * _len * u.M_sun,
-                                       m_2=[i[1]] * _len * u.M_sun,
-                                       ecc=[i[2]] * _len,
+
+        return [legwork.source.Source(m_1=[array[0]] * _len * u.M_sun,
+                                       m_2=[array[1]] * _len * u.M_sun,
+                                       ecc=[array[2]] * _len,
                                        dist=[1] * _len * u.kpc,
                                        f_orb=self.f_orb,
                                        interpolate_g=True,
-                                       interpolate_sc=True).get_snr_evolving(t_obs=4 * u.yr) / 7, i[3]] for i in array]
+                                       interpolate_sc=True).get_snr_evolving(t_obs=4 * u.yr) / 7, array[3]]
 
-    def get_d_max(self, gal_number):
-        chopped_array = self.__get_chunks([self.__df_to_array(gal_number), self.chunk_size])
+    def get_d_max(self):
+        chopped_array = self.__get_chunks([self.__df_to_array(), self.chunk_size])
         print(f'{len(chopped_array)} arrays to process\n')
-        _out = [j for i in
-                [(print(f'starting array # {i}'), self._get_d_max(v))[1] for i, v in enumerate(chopped_array)]
-                for j in i]
-
-        return _out
-
-    def run(self, gal_number):
-        return Pool(self.n_proc).map(GetDMax(self.df).get_d_max, gal_number)
+        return [(print(f'\nstarting array # {i+1}/{len(chopped_array)}\n'), Pool(self.n_proc).map(self.claculate_d_max, v))[1]
+                for i, v in enumerate(chopped_array)]

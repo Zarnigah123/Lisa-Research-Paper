@@ -9,8 +9,6 @@ import pandas as pd
 
 from dmax_calculations__no_plot import GetDMax
 
-gal = np.reshape(np.linspace(1, 100, 100), (10, 10))
-
 data_ = pd.read_csv('./combined_dcos.csv')
 
 bhbh_df = data_[data_.dco_type == 'BHBH']
@@ -18,20 +16,25 @@ nsns_df = data_[data_.dco_type == 'NSNS']
 nsbh_df = data_[data_.dco_type == 'NSBH']
 bhns_df = data_[data_.dco_type == 'BHNS']
 
-bhbh_df.reset_index(drop=True, inplace=True)
-nsns_df.reset_index(drop=True, inplace=True)
-nsbh_df.reset_index(drop=True, inplace=True)
-bhns_df.reset_index(drop=True, inplace=True)
+def df_drop_dup(data_frame):
+    temp_ = data_frame.drop_duplicates(subset='seed', ignore_index = True)
+    return temp_
 
-if __name__ == '__main__':
-    d_bhbh = GetDMax(bhbh_df, n_proc=10).run(gal)
-    np.save('BHBH_maxdist', d_bhbh)
+bhbh_df, nsns_df, nsbh_df, bhns_df = list(map(df_drop_dup,
+                                              [bhbh_df, nsns_df, nsbh_df, bhns_df]))
 
-    d_nsns = GetDMax(nsns_df, n_proc=10).run(gal)
-    np.save('NSNS_maxdist', d_nsns)
+print('Starting BHBH\n')
+d_bhbh = GetDMax(bhbh_df, n_proc=3).get_d_max()
+np.save('BHBH_maxdist', d_bhbh)
 
-    d_nsbh = GetDMax(nsbh_df, n_proc=10).run(gal)
-    np.save('NSBH_maxdist', d_nsbh)
+print('Starting NSNS\n')
+d_nsns = GetDMax(nsns_df, n_proc=3).get_d_max()
+np.save('NSNS_maxdist', d_nsns)
 
-    d_bhns = GetDMax(bhns_df, n_proc=10).run(gal)
-    np.save('BHNS_maxdist', d_bhns)
+print('Starting NSBH\n')
+d_nsbh = GetDMax(nsbh_df, n_proc=3).get_d_max()
+np.save('NSBH_maxdist', d_nsbh)
+
+print('Starting BHNS\n')
+d_bhns = GetDMax(bhns_df, n_proc=3).get_d_max()
+np.save('BHNS_maxdist', d_bhns)

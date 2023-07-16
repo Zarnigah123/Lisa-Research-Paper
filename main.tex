@@ -1,4 +1,4 @@
-\documentclass[journal, twocolumn]{IEEEtran}
+\documentclass[journal, twocolumns]{IEEEtran}
 %\usepackage[switch]{lineno}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -37,6 +37,8 @@
 \newcommand{\semaxis}[1]{a_{\text{#1}}}
 \newcommand{\ecc}[1]{e_\text{#1}}
 \newcommand{\interval}[1]{t_\text{#1}}
+
+\newcommand{\notFraction}[2]{$^\text{#1}/_\text{#2}$}
 
 \if
 CLASSINFOpdf
@@ -87,13 +89,11 @@ CLASSINFOpdf
     The gravitational waves (GW) were predicted a year after the final formulation of the general theory of relativity (GR) by Albert Einstein~\cite{Einstein1916}.
     Similar to electromagnetic waves, the GWs travel at the speed of light~\citep{Eddington1922, Abott2017}.
     However, unlike electromagnetic waves, the GW stretches and squeezes the space itself thus causing spatial disturbances.
-    The detection of Hulse-Taylor binary~\citep{Hulse1975}, and the subsequent observation of a seven years time
-    span~\citep{Taylor1982} stirred a great interest in the GW observations.
+    The detection of Hulse-Taylor binary~\citep{Hulse1975}, and the subsequent observation of a seven years time span~\citep{Taylor1982} stirred a great interest in the GW observations.
     It wasn't until 2015 that the first direct observation of GW was made by LIGO and VIRGO collaborations~\citep{Abott2017}.
     The lower frequency bound for both the aLIGO and VIRGO detectors is around \SI{10}{\hertz}~\cite{aLIGO2015, aVIRGO2014}
 
-    The Laser Interferometer Space Antenna (LISA) has three spacecrafts that form a triangle, each side 2.5 million
-    km long~\cite{Prince2002, Robson2019}.
+    The Laser Interferometer Space Antenna (LISA) has three spacecrafts that form a triangle, each side 2.5 million km long~\cite{Prince2002, Robson2019}.
     Operating in the frequency range of \SI{1e-5}{\hertz}$\,\leq  f \leq\,$\SI{1e-1}{\hertz} LISA will be able to observe the sources millions of years before they merge.
     The early detection capability will help better constrain and determine the orbital parameters of the observed binaries.
     Some sources detectable by LISA are the extreme mass ratio inspirals (EMRIs)~\cite{Gair2017, Klein2016, Chapman2022} and galactic binaries~\cite{wagg2021gravitational, Abott2017, Digman2022}.
@@ -149,10 +149,11 @@ CLASSINFOpdf
 
     For eccentricity, we make use of two cases,
     \begin{itemize}
-        \item Case I: All the binary systems are generated using a flat distribution, $e \in (0, 1)$.
+        \item Case I: All the binary systems are generated using a uniform distribution, $e \in (0, 1]$.
         \item Case II: All the binary systems are generated with circular orbits, i.e., $e = 0$.
     \end{itemize}
 
+	From here on the data set for Case I and Case II will be represented by $\Theta_1$ and $\Theta_2$ respectively.
     Details about the selection of metallicity and eccentricity values in COMPAS are provided in appendix~\ref{sec:appA}.
 %    In section~\ref{sec:detections} we discuss the summary of the DCOs formed by the COMPAS generated binaries.
 %    In addition to the parameter mentioned above, the COMPAS chooses four more parameters stochastically.
@@ -177,7 +178,7 @@ CLASSINFOpdf
     where $Z$ is the metallicity of the binary system, $\o$ is the seed number, $\interval{evolve}$ is the time required to form DCO from ZAMS. $\semaxis{ZAMS}$, $\semaxis{DCO}$, $\ecc{ZAMS}$, and $\ecc{DCO}$ are the semi-major axis and eccentricity of the binary orbit at ZAMS and DCO formation respectively.
     \begin{figure}[!ht]%
         \centering%
-        \includegraphics[width=\linewidth]{images/binary_evolution}%
+        \includegraphics[width=\columnwidth]{images/binary_evolution}%
         \caption{Schematic diagram showing various time intervals for a binary system from ZAMS formation, to DCO, and merger. The figure is taken from~\cite{Riley2022}.}%
         \label{fig:binaryevolution}%
     \end{figure}%
@@ -188,7 +189,7 @@ CLASSINFOpdf
 
     The DCO$-$merger evolution method follows the one outlined by~\cite{wagg2021gravitational} closely.
     The evolution was done such that the MW galaxy instance was divided into bins based on the metallicity values of the evolving binaries.
-    The evolution time was calculated after taking into consideration the ZAMS-DCO evolution time and the lookback time of the binary produced.
+    The evolution time was calculated after taking into consideration the ZAMS-DCO evolution time and the lookback time of all the MW points within the metallicity bins.
     If a binary, at DCO stage, had a resultant merger time greater than the difference of its lookback time and ZAMS-DCO evolution time, it was marked as an inspiralling binary.
     Each inspiralling binary was than evolved at every point within the corresponding metallicity bin using LEGWORK to a million year before its merger time.
     At this stage, the resulting LISA parameters of interest were,
@@ -209,7 +210,6 @@ CLASSINFOpdf
         \label{eq:characteristic_strain}
     \end{equation}
 
-
     \section{Evolution and detection}
     \label{sec:evolution-and-detection}
 
@@ -218,147 +218,141 @@ CLASSINFOpdf
     The Hubble time merge rate of DCOs is given in table~\ref{tab:dco_details},
     \begin{table}[!ht]%
         \centering
-%        \resizebox{\columnwidth}{!}{
-        \begin{tabular}{@{}cccc@{}}
+        \resizebox{\columnwidth}{!}{
+        \begin{tabular}{@{}ccccc@{}}
             \toprule
-            \multirow{2.5}{*}{BHBH} & \multirow{2.5}{*}{NSNS} & \multicolumn{2}{c}{BHNS} \\ \cmidrule(l){3-4}
-            &           & NSBH    & BHNS     \\ \midrule
-            492/663 & 4752/9219 & 480/868 & 815/1504 \\ \bottomrule
+            \multirow{2.5}{*}{Type}&\multirow{2.5}{*}{BHBH} & \multirow{2.5}{*}{NSNS} & \multicolumn{2}{c}{BHNS} \\ \cmidrule(l){4-5}
+            &&           & NSBH    & BHNS     \\ \midrule
+            \notFraction{M}{T} & \notFraction{492}{663} & \notFraction{4752}{9219} & \notFraction{480}{868} & \notFraction{815}{1504} \\ 
+            \notFraction{D}{M} & \notFraction{348}{492} & \notFraction{1281}{4752} & \notFraction{329}{480} & \notFraction{330}{815} \\ \bottomrule
         \end{tabular}%
-%    	 }
-        \caption{Number of DCOs merged within Hubble time vs total DCOs formed by the COMPAS suite.}
+    	 }
+        \caption{\textsc{\textbf{RowI}} shows the merging (M) vs total (T) formed DCOs in this study, \textsc{\textbf{RowII}} shows the uniquely detectable (D) vs the merging (MR) DCOs from this study for $\Theta_1$.}
         \label{tab:dco_details}
     \end{table}
 
-    The highest merging rate in this study is of BHBH DCO type ($\sim$74.21\%), followed by NSBH pairs ($\sim$55.30\%), BHNS ($\sim$54.2\%) and lastly NSNS DCO type ($\sim$51.55\%) comprising the `candidate binaries'.\footnote{Such DCO pairs which can have a potential LISA detection.}
-
-    \begin{figure*}[!h]%
-        \centering
-        \includegraphics[width=\textwidth]{analysis_data/main_analysis_folder/all_zams_params}
-        \caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the `candidate' binaries. The bottom row shows the selection of supernova kick parameters made by the COMPAS suite.}
-        \label{fig:all_zams_params}
-    \end{figure*}%
-
-    \begin{table*}[!h]
-        \centering
-        \resizebox{\textwidth}{!}{%
-            \begin{tabular}{@{}ccccccccccc@{}}
-                \toprule
-                \multirow{2.5}{*}{Parameters} & \multirow{2.5}{*}{MAX} & \multicolumn{2}{c}{ZAMS details} & \multicolumn{2}{c}{DCO details} & \multirow{2.5}{*}{MIN} & \multicolumn{2}{c}{ZAMS details} & \multicolumn{2}{c}{DCO details} \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
-                &         & Primary & Secondary & Primary & Secondary &        & Primary & Secondary & Primary & Secondary \\ \midrule
-
-                \multicolumn{11}{c}{\textbf{Binary Black Holes}} \\
-                $\mone{ZAMS}$ & 149.836 & 149.836 & 115.624   & 10.386  & 10.395    & 13.007 & 13.007  & 12.500    & 2.216   & 2.601     \\
-                $\mtwo{ZAMS}$ & 131.178 & 148.802 & 131.178   & 8.662   & 8.459     & 12.500 & 13.007  & 12.500    & 2.216   & 2.601     \\
-                $\mone{DCO}$  & 43.308  & 57.334  & 57.334    & 43.308  & 43.308    & 2.022  & 26.497  & 26.493    & 2.022   & 7.104     \\
-                $\mtwo{DCO}$  & 43.308  & 57.334  & 57.334    & 43.308  & 43.308    & 2.018  & 42.088  & 30.574    & 7.456   & 2.018     \\
-
-                \multicolumn{11}{c}{\textbf{Binary Neutron Stars}} \\
-
-                $\mone{ZAMS}$ & 54.41   & 54.41   & 13.76     & 1.614   & 1.235     & 8.546  & 8.546   & 7.822     & 1.26    & 1.193     \\
-                $\mtwo{ZAMS}$ & 25.571  & 25.586  & 25.571    & 1.480   & 1.693     & 6.626  & 13.01   & 6.626     & 1.26    & 1.194     \\
-                $\mone{DCO}$  & 1.938   & 14.022  & 13.938    & 1.938   & 1.487     & 1.135  & 10.319  & 10.019    & 1.135   & 1.392     \\
-                $\mtwo{DCO}$  & 1.991   & 13.919  & 13.574    & 1.681   & 1.991     & 1.132  & 11.674  & 11.021    & 1.518   & 1.132     \\
-
-                \multicolumn{11}{c}{\textbf{Neutron Star $-$ Black Hole}} \\
-
-                $\mone{ZAMS}$ & 53.708  & 53.708  & 29.613    & 1.439   & 15.342    & 8.971  & 8.971   & 8.847     & 1.260   & 3.869     \\
-                $\mtwo{ZAMS}$ & 42.242  & 42.289  & 42.242    & 1.598   & 7.382     & 8.665  & 9.164   & 8.665     & 1.260   & 2.062     \\
-                $\mone{DCO}$  & 1.935   & 14.090  & 13.959    & 1.935   & 3.825     & 1.137  & 27.186  & 17.676    & 1.137   & 9.646     \\
-                $\mtwo{DCO}$  & 15.342  & 53.708  & 29.613    & 1.439   & 15.342    & 2.003  & 12.472  & 12.033    & 1.608   & 2.003     \\
-
-                \multicolumn{11}{c}{\textbf{Black Hole $-$ Neutron Star}} \\
-
-                $\mone{ZAMS}$ & 145.467 & 145.467 & 46.439    & 9.907   & 1.593     & 11.626 & 11.626  & 11.608    & 2.216   & 1.522     \\
-                $\mtwo{ZAMS}$ & 108.489 & 140.091 & 108.489   & 12.217  & 1.415     & 10.072 & 23.144  & 10.072    & 2.922   & 1.206     \\
-                $\mone{DCO}$  & 15.106  & 90.844  & 76.11     & 15.106  & 1.669     & 2.004  & 13.125  & 12.872    & 2.004   & 1.785     \\
-                $\mtwo{DCO}$  & 1.945   & 29.142  & 15.445    & 4.341   & 1.945     & 1.141  & 28.317  & 22.834    & 5.61    & 1.141     \\ \bottomrule
-            \end{tabular}%
-        }
-        \caption{Maximum and minimum values for masses of both ZAMS and DCO type stars in the BHBH data set with their respective counterparts. The `MAX' and `MIN' columns represent the maximum and minimum value for the given parameter respectively. The `ZAMS details' and `DCO details' column list the value of primary and secondary components of the binary and `ZAMS' and `DCO' stage of evolution respectively for the binary with `MAX' and `MIN' value of the parameter. All the masses are given in units of solar mass, $M_\odot$ where \num{1}\,$M_\odot \approx$ \SI{2e30}{\kilogram}.}
-        \label{tab:bhbh-details-table}
-    \end{table*}
-
-    \begin{figure*}[!h]%
-        \centering
-        \includegraphics[width=\textwidth]{analysis_data/main_analysis_folder/dco_typewise_snr}
-        \caption{Detectable sources' characteristic strain vs. dominant frequency in our simulations are shown on the LISA sensitivity curve. The sources are color-coded based on their eccentricities, green for low and red for high eccentric sources.}
-        \label{fig:alldcosnrplotting}
-    \end{figure*}
+    The highest merging rate in this study is of BHBH pairs ($\sim$74.21\%), followed by NSBH pairs ($\sim$55.30\%), BHNS ($\sim$54.2\%) and lastly NSNS DCO type ($\sim$51.55\%) comprising the `candidate binaries'.\footnote{Such DCO pairs which can have a potential LISA detection.}
 
     Using the LEGWORK framework~\cite{wagg2021legwork}, these binaries were than checked for their inspiral phase using the $\interval{evolve}$\footnote{Obtained via COMPAS.} and $\interval{lookback}$\footnote{Obtained via galaxy synthesis.}.
     The difference between lookback and evolution time of a binary was required to be greater than its merger time\footnote{Obtained via LEGWORK framework.}.
-    As the number of inspiralling binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}} multiple detections of a single binary object are present in the final output.
+    Out of the merging binaries, BHBH pairs had the most detectable sources in the data set, ($\sim$70.73\%), followed by NSBH pair ($\sim$68.54\%), BHNS pair ($\sim$40.49\%) and lastly NSNS pair ($\sim$26.96\%).
+    
+    As the number of detectable binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}} multiple detections of a single binary object are present in the final output.
     Table~\ref{tab:bhbh-details-table} shows selective details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages.
     In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
-    The number of detections across all the MW instances came out to be 12758 in total alm
+    The number of detections across all the MW instances came out to be 12758.
+    
+    
+
+    \begin{table}[!h]
+		\centering
+		\resizebox{\columnwidth}{!}{%
+			\begin{tabular}{@{}ccccccccccc@{}}
+				\toprule
+				\multirow{2.5}{*}{Parameters} & \multirow{2.5}{*}{MAX} & \multicolumn{2}{c}{ZAMS details} & \multicolumn{2}{c}{DCO details} & \multirow{2.5}{*}{MIN} & \multicolumn{2}{c}{ZAMS details} & \multicolumn{2}{c}{DCO details} \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
+				&         & Primary & Secondary & Primary & Secondary &        & Primary & Secondary & Primary & Secondary \\ \midrule
+				
+				\multicolumn{11}{c}{\textbf{Binary Black Holes}} \\
+				$\mone{ZAMS}$ & 149.836 & 149.836 & 115.624   & 10.386  & 10.395    & 13.007 & 13.007  & 12.500    & 2.216   & 2.601     \\
+				$\mtwo{ZAMS}$ & 131.178 & 148.802 & 131.178   & 8.662   & 8.459     & 12.500 & 13.007  & 12.500    & 2.216   & 2.601     \\
+				$\mone{DCO}$  & 43.308  & 57.334  & 57.334    & 43.308  & 43.308    & 2.022  & 26.497  & 26.493    & 2.022   & 7.104     \\
+				$\mtwo{DCO}$  & 43.308  & 57.334  & 57.334    & 43.308  & 43.308    & 2.018  & 42.088  & 30.574    & 7.456   & 2.018     \\
+				
+				\multicolumn{11}{c}{\textbf{Binary Neutron Stars}} \\
+				
+				$\mone{ZAMS}$ & 54.41   & 54.41   & 13.76     & 1.614   & 1.235     & 8.546  & 8.546   & 7.822     & 1.26    & 1.193     \\
+				$\mtwo{ZAMS}$ & 25.571  & 25.586  & 25.571    & 1.480   & 1.693     & 6.626  & 13.01   & 6.626     & 1.26    & 1.194     \\
+				$\mone{DCO}$  & 1.938   & 14.022  & 13.938    & 1.938   & 1.487     & 1.135  & 10.319  & 10.019    & 1.135   & 1.392     \\
+				$\mtwo{DCO}$  & 1.991   & 13.919  & 13.574    & 1.681   & 1.991     & 1.132  & 11.674  & 11.021    & 1.518   & 1.132     \\
+				
+				\multicolumn{11}{c}{\textbf{Neutron Star $-$ Black Hole}} \\
+				
+				$\mone{ZAMS}$ & 53.708  & 53.708  & 29.613    & 1.439   & 15.342    & 8.971  & 8.971   & 8.847     & 1.260   & 3.869     \\
+				$\mtwo{ZAMS}$ & 42.242  & 42.289  & 42.242    & 1.598   & 7.382     & 8.665  & 9.164   & 8.665     & 1.260   & 2.062     \\
+				$\mone{DCO}$  & 1.935   & 14.090  & 13.959    & 1.935   & 3.825     & 1.137  & 27.186  & 17.676    & 1.137   & 9.646     \\
+				$\mtwo{DCO}$  & 15.342  & 53.708  & 29.613    & 1.439   & 15.342    & 2.003  & 12.472  & 12.033    & 1.608   & 2.003     \\
+				
+				\multicolumn{11}{c}{\textbf{Black Hole $-$ Neutron Star}} \\
+				
+				$\mone{ZAMS}$ & 145.467 & 145.467 & 46.439    & 9.907   & 1.593     & 11.626 & 11.626  & 11.608    & 2.216   & 1.522     \\
+				$\mtwo{ZAMS}$ & 108.489 & 140.091 & 108.489   & 12.217  & 1.415     & 10.072 & 23.144  & 10.072    & 2.922   & 1.206     \\
+				$\mone{DCO}$  & 15.106  & 90.844  & 76.11     & 15.106  & 1.669     & 2.004  & 13.125  & 12.872    & 2.004   & 1.785     \\
+				$\mtwo{DCO}$  & 1.945   & 29.142  & 15.445    & 4.341   & 1.945     & 1.141  & 28.317  & 22.834    & 5.61    & 1.141     \\ \bottomrule
+			\end{tabular}%
+		}
+		\caption{Maximum and minimum values for masses of both ZAMS and DCO type stars in the BHBH data set with their respective counterparts. The `MAX' and `MIN' columns represent the maximum and minimum value for the given parameter respectively. The `ZAMS details' and `DCO details' column list the value of primary and secondary components of the binary and respective stage of evolution with `MAX' and `MIN' value of the parameter at that stage. All the masses are given in units of solar mass, $M_\odot$ where \num{1}\,$M_\odot \approx$ \SI{2e30}{\kilogram}.}
+		\label{tab:bhbh-details-table}
+	\end{table}
 
     The predicted distribution of the LISA detectable sources is plotted over its expected sensitivity curve~\cite{Robson2019}, in figure~\ref{fig:alldcosnrplotting}.
-    The x-axis shows the dominant frequency, the frequency accumulating the largest SNR, for the eccentric binaries.
-    Furthermore, on y-axis we plot the amplitude spectral density (ASD), including the contribution from all harmonics.
-    The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$).
-    The size of the points varies with metallicity; high metallic sources have larger shapes and vice versa.
-    The color scheme is based on the eccentricity of detected binaries, e.g, the red ones are the highly eccentric ($\ecc{DCO} > 0.9$), the yellow ones are mid-eccentric ($0.1 < \ecc{DCO} \leq 0.9$), and the green ones are the sources with low eccentricities ($\ecc{DCO} \leq 0.1$).
-	
-    \begin{figure*}[!h]
-    	\centering
-    	\includegraphics[width=\textwidth]{analysis_data/dco_fdom_ecc_details}
-    	\caption{Plot showing the kernel density estimation of different DCO types for the dominant frequency emitted by the binary, characterized by the eccentricity of their orbits. The inset bar plot show the number of binaries associated with the given eccentricity plotted in log scale. The number inside the bars show the actual number of binaries for the given eccentricity. The log scaling was chosen due to relative lower number of DCOs in NSNS and BHNS types.}
-    	\label{fig:dcofdomeccdetails}
-    \end{figure*}
+	The x-axis shows the dominant frequency, the frequency accumulating the largest SNR, for the eccentric binaries.
+	Furthermore, on y-axis we plot the amplitude spectral density (ASD), including the contribution from all harmonics.
+	The gap between the detected binaries and the LISA curve in the graph is the SNR criteria, ($\text{SNR}\,>\,7$).
+	The size of the points varies with metallicity; high metallic sources have larger shapes and vice versa.
+	The color scheme is based on the eccentricity of detected binaries with a reverse red-yellow-green color palette\footnote{\url{https://matplotlib.org/stable/gallery/color/colormap_reference.html}}, going from green, yellow and finally red in increasing order of eccentricity values.
 
-    Majority of the binary population for all DCO types has a dominant frequency less than $\sim$\SI{2e-3}{\hertz}, (see figure~\ref{fig:dcofdomeccdetails}).
+	 \begin{figure}[!h]%
+		\centering
+		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_typewise_snr}
+		\caption{Detectable sources' characteristic strain vs. dominant frequency in our simulations are shown on the LISA sensitivity curve. The sources are color-coded based on their eccentricities, green for low and red for high eccentric sources.}
+		\label{fig:alldcosnrplotting}
+	\end{figure}
+
+    \begin{figure}[!h]
+		\centering
+		\includegraphics[width=\columnwidth]{analysis_data/dco_fdom_ecc_details}
+		\caption{\textsc{\textbf{Row1:}} Eccentricity characterized distribution of DCOs for their orbital frequency. \textsc{\textbf{Row2:}} Same as \textsc{\textbf{Row1}} but for the binary's dominant frequency. \textsc{\textbf{Row3:}} Number of binaries associated with the given eccentricity in log scale. The number inside the bars show the actual number of binaries for the given eccentricity. The log scaling was chosen due to relative lower number of DCOs in NSNS and BHNS types.}
+		%    	\caption{Plot showing the kernel density estimation of different DCO types for the dominant frequency emitted by the binary, characterized by the eccentricity of their orbits. The inset bar plot show the number of binaries associated with the given eccentricity plotted in log scale. The number inside the bars show the actual number of binaries for the given eccentricity. The log scaling was chosen due to relative lower number of DCOs in NSNS and BHNS types.}
+		\label{fig:dcofdomeccdetails}
+	\end{figure}
+	
+	Majority of the binary population reside on the lower end of LISA spectrum, e.g., the dominant frequency of the sources lie below the LISA's sensitive frequency of \SI{10}{\milli\hertz}.
+	For \textsc{text\textbf{Row1}}, the peak frequency occurs at \num[scientific-notation=engineering]{1.74e-4} \SI[exponent-to-prefix=true, scientific-notation=engineering,]{1.74e-4}{\hertz}, \SI[exponent-to-prefix=true, scientific-notation=engineering]{5.308e-4}{\hertz}
+    Majority of the binary population for all DCO types have a dominant frequency towards the lower end of the LISA spectrum, e.g., dominant frequency is less than \SI{1e-2}{\hertz}, (see figure~\ref{fig:dcofdomeccdetails} \textsc{\textbf{Row2}}).
     The main reason for such a trend can be explained through the eccentricities of the binaries.
-    As seen from the figure~\ref{fig:dcofdomeccdetails}, a large portion of our binaries is either low or mid-eccentric.
+    As seen from the figure~\ref{fig:dcofdomeccdetails} \textsc{\textbf{Row3}}, a large portion of our binaries is either low or mid-eccentric.
     The orbit of low eccentric or circular binaries evolves differently than high eccentric binaries.
     After the formation of DCO, most of the low eccentric binaries emit GW in low-frequency bands of LISA as the orbit progresses.
-    While DCOs with high eccentricities behave in a completely different way, i.e.\ their orbit decay faster, and they tend to emit GW in the high-frequency LISA detection band~\cite{Peters1963, Peters1964}.
-    Although these are of prime importance in the LISA mission, unfortunately, these are rare.
-    Thus, most of the DCOs are at lower frequency regions.
-    
-    Fig.~\ref{fig:freq} shows the distribution of the orbital frequency; $f$, and eccentricity at the time of LISA mission; $e$.
-    The regions surrounding the individual graphs are the $1\,\sigma$, and $2\,\sigma$ uncertainties which are the variations of the results over 100 random instances of our galaxy.
-    We plot this figure using the bootstrapping function~\cite{wagg2021gravitational}.
-    The left side of the graph is the orbital frequency distribution.
-    It shows peaks of different types of sources i.e. \textbf{0.3mHz, 0.7mHz, 0.99} for BHBH, NSNS, and NSBH\@.
-    The reason for such a trend is because of the mass difference as higher mass DCO The distribution is a little negatively skewed.
-    As mentioned above, a higher mass DCO at the same distance and eccentricity requires a lower frequency to produce the same signal-to-noise ratio and thus be detected.
-    The orbital frequency distributions for BHBHs, BHNSs, and NSNSs (figure, 3a) peak at progressively increasing frequencies as mentioned in section 3.1.
-    The distributions appear nearly symmetric, but closer inspections show that the left-hand side is more populated, which can be seen most clearly in the curve for the BHBHs.
-    This is due to the contribution of highly eccentric binaries, which are most abundant in the BHBH population.
-    These systems are still detectable by LISA, despite their low orbital frequency, as the high eccentricity means that the majority of the GW signal is emitted at higher harmonics, where LISA is more sensitive.
-    
-    We can also observe the peaks for high chirp mass systems have peaks in the low-frequency detection region, as they emit the waves in lower frequency.
-    Hence, this is another way to differentiate sources.
-    Hence, the BHBH pairs have the most eccentric pairs having the highest average eccentricity and $\langle M_c\rangle$.
-    
+    While DCOs with high eccentricities behave in a completely different way, i.e.\ their orbit decay faster, and they tend to emit GW in high harmonics~\cite{Peters1963, Peters1964}. Fig.~\ref{fig:dcofdomeccdetails} \textsc{\textbf{Row1}} shows the distribution of population over their orbital frequency; $f_\mathrm{orb}$. We can see from orbital and dominant frequency histograms that although no DCO with $e > 0.9$ had $f_\mathrm{orb} >$ \SI{1e-3}{\hertz} but due to their large SNR harmonics the dominant frequency for a lot of those binaries shift upwards of \SI{1e-3}{\hertz} which pushes them to LISA's more sensitive region.
+%    The regions surrounding the individual graphs are the $1\,\sigma$, and $2\,\sigma$ uncertainties which are the variations of the results over 100 random instances of our galaxy.
+%    We plot this figure using the bootstrapping function~\cite{wagg2021gravitational}.
+%    The left side of the graph is the orbital frequency distribution.
+%    It shows peaks of different types of sources i.e. \textbf{0.3mHz, 0.7mHz, 0.99} for BHBH, NSNS, and NSBH\@.
+%    The reason for such a trend is because of the mass difference as higher mass DCO The distribution is a little negatively skewed.
+%    As mentioned above, a higher mass DCO at the same distance and eccentricity requires a lower frequency to produce the same signal-to-noise ratio and thus be detected.
+%    The orbital frequency distributions for BHBHs, BHNSs, and NSNSs (figure, 3a) peak at progressively increasing frequencies as mentioned in section 3.1.
+%    The distributions appear nearly symmetric, but closer inspections show that the left-hand side is more populated, which can be seen most clearly in the curve for the BHBHs.
+%    This is due to the contribution of highly eccentric binaries, which are most abundant in the BHBH population.
+%    These systems are still detectable by LISA, despite their low orbital frequency, as the high eccentricity means that the majority of the GW signal is emitted at higher harmonics, where LISA is more sensitive.
+%    
+%    We can also observe the peaks for high chirp mass systems have peaks in the low-frequency detection region, as they emit the waves in lower frequency.
+%    Hence, this is another way to differentiate sources.
+%    Hence, the BHBH pairs have the most eccentric pairs having the highest average eccentricity and $\langle M_c\rangle$.
 
     Figure~\ref{fig:dcotypemwcomponentdistributioncropped} shows the percentage of different DCOs detected in the \lowalpha, \highalpha and bulge components of the MW instances.
-%    In every component, the majority of detections come from BBH pairs.
-
-    \begin{figure}[!h]%
-        \centering
-        \includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_type_MW_component_distribution_cropped}
-        \caption{Waffle charts showing percentage proportion for DCO type detections in the MW instance components in this study.}
-        \label{fig:dcotypemwcomponentdistributioncropped}
-    \end{figure}%
     For \lowalpha\ disk, the NSBH pairs have more detections than BHN pairs.
     Contrary to that, NSBH pairs show no detection in \highalpha\ disk, and fractional detection in the bulge, $\sim0.833\%$.
     On the other hand, the BHNS pairs have the lowest detection rate in all three components.
-
+    
     \begin{figure}[!h]%
-        \centering
-        \includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_type_MW_distribution}
-        \caption{Waffle chart showing the total number of detections per MW instance component in this study on the whole.}
-        \label{fig:dcotypemwdistribution}
-    \end{figure}%
-
+		\centering
+		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_type_MW_component_distribution_cropped}
+		\caption{Waffle charts showing percentage proportion for DCO type detections in the MW instance components in this study.}
+		\label{fig:dcotypemwcomponentdistributioncropped}
+	\end{figure}%
+	
     Figure~\ref{fig:dcotypemwdistribution} shows the percentage of detections in the three components regardless of the DCO type.
     Here we see that majority of the detections are in the \lowalpha\ disk.
     This can be attributed to the biased metallicity value used in this study, $\text{Beta}(5, 80)$.
     These detection percentages do align with the age-metallicity relationship as the bulge is oldest component and thus should have lower metallicity ZAMS stars.
     However, due to the choice of metallicity distribution, these stars were not generated in large numbers.
 
+	\begin{figure}[!h]%
+		\centering
+		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_type_MW_distribution}
+		\caption{Waffle chart showing the total number of detections per MW instance component in this study on the whole.}
+		\label{fig:dcotypemwdistribution}
+	\end{figure}%
 
 %	\begin{figure}
 %		\includegraphics[width=\columnwidth]{images/second}
@@ -397,15 +391,20 @@ CLASSINFOpdf
     \end{equation}
 
     Where $\rho_{\min}$ is the minimum value of SNR below which the source is not detectable.
-    We keep the detection threshold at $\rho_{\min}\,=\,7$, and $\rho(d\,=\,1\,\text{kpc})$ is SNR of the source if it was at $1\,\text{kpc}$ distance from the detector.
-    We calculated the SNR of all the detected sources at \SI{1}{\kpc} distance using the python package LEGWORK~\cite{wagg2021legwork}.
-    Afterward, their maximum distances $(d_{\max})$ were calculated.
+	We keep the detection threshold at $\rho_{\min}\,=\,7$, and $\rho(d\,=\,1\,\text{kpc})$ is SNR of the source if it was at $1\,\text{kpc}$ distance from the detector.
+	We calculated the SNR of all the detected sources at \SI{1}{\kpc} distance using the python package LEGWORK~\cite{wagg2021legwork}.
+	Afterward, their maximum distances $(d_{\max})$ were calculated.
+	
+    Figure~\ref{fig:dmax} shows the mean maximum distances for all the detected sources.
+    The black line shows the average maximum distance for all the types combined.
+    The LISA sensitivity curve is also overlaid on the graph.
 
-    Figure~\ref{fig:dmax} shows the maximum distances for all the detected sources.
-    The top shows $d_{\max}$ for BHBH, and NSNS while the bottom has NSBH and BHNS\@.
-    These are calculated for all the LISA band frequencies.
-    The black line shows the average maximum distance for all the types.
-    The LISA sensitivity curve is also overlaid on the graph as a blue line.
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\linewidth]{analysis_data/d_max}
+		\caption{Mean maximum distances for all of the different types of DCO corresponding to their orbital frequency. The overall average maximum detection distance is shown by a black line.}
+		\label{fig:dmax}
+	\end{figure}
 
     BHBH, being the dominant source can be observed to an average distance of more than \SI{1e5}{\kpc}.
     NSBH and BHNS have almost the same average $d_{\max}$ i.e between \SI{1e3}{\kpc} and \SI{1e4}{\kpc} while NSNS has peak at $\sim\,$\SI{1e3}{\kpc}.
@@ -415,14 +414,6 @@ CLASSINFOpdf
     Almost all the highest values of average $d_{\max}$ of four types are around a \textbf{certain frequency} i.e., if a source has \textbf{certain orbital frequency} then it can be detected to its maximum detection distance.
     It can be observed through the LISA overlay that this frequency lies in the area where the detector is most sensitive.
     Hence, if a source emits in the frequency region of the highest sensitivity of LISA, then it will be detected at a maximum distance.
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=\linewidth]{images/DMAX}
-        \caption{Maximum distances for all of the different types of DCO. The average maximum distance is
-        shown through a black line while the blue line shows the overlaid LISA sensitivity curve}
-        \label{fig:dmax}
-    \end{figure}
 
     \section{Comparative analysis}
     \label{sec:comparative-analysis}
@@ -488,6 +479,14 @@ CLASSINFOpdf
 
 
     \section{Discussion and Future work}\label{sec:df}
+    
+        \begin{figure*}[!h]%
+    	\centering
+    	\includegraphics[width=\textwidth]{analysis_data/main_analysis_folder/all_zams_params}
+    	\caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the `candidate' binaries. The bottom row shows the selection of supernova kick parameters made by the COMPAS suite.}
+    	\label{fig:all_zams_params}
+    \end{figure*}%
+    
     \ifCLASSOPTIONcaptionsoff
     \newpage
     \fi
