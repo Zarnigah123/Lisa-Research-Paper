@@ -45,6 +45,8 @@ all_asd = all_snr * np.sqrt(lw.psd.power_spectral_density(all_f_dom))
 all_mc = np.concatenate([i['mc_dco'] for i in fid_sources])
 all_mr = np.concatenate([i['m1_dco'] / i['m2_dco'] for i in fid_sources])
 all_Z = np.concatenate([i['Z'] for i in fid_sources])
+all_seed = np.concatenate([i['seeds'] for i in fid_sources])
+all_galaxy = np.concatenate([i['galaxy_number'] for i in fid_sources])
 
 all_f = np.concatenate([i['freq'] for i in fid_sources])
 
@@ -52,42 +54,38 @@ _types = [[dco_types[i]] * len(v['m1_dco']) for i, v in enumerate(fid_sources)]
 all_types = np.concatenate([i for i in _types])
 
 s_df = pd.DataFrame([all_f_dom.value, all_asd.to(u.Hz**-0.5).value, all_f.value, all_ecc, all_Z, all_types,
-                     all_snr]).T
-s_df.columns = ['f_dom', 'ASD', 'f_orb', 'ecc', 'Z', 'types', 'SNR']
+                     all_snr, all_seed, all_galaxy]).T
+s_df.columns = ['f_dom', 'ASD', 'f_orb', 'ecc', 'Z', 'types', 'SNR', 'seeds', 'gal_number']
 
 # separate the dataframe
-s_df_bhbh = s_df[s_df.types == 'BHBH']
-s_df_bhns = s_df[s_df.types == 'BHNS']
-s_df_nsns = s_df[s_df.types == 'NSNS']
-s_df_nsbh = s_df[s_df.types == 'NSBH']
+s_df_bhbh = s_df[s_df.types == dco_types[0]]
+s_df_nsns = s_df[s_df.types == dco_types[1]]
+s_df_bhns = s_df[s_df.types == dco_types[2]]
+s_df_nsbh = s_df[s_df.types == dco_types[3]]
 
-# fig_, ax = plt.subplots(1, 1, figsize=(8, 6))
-
-freq = np.logspace(np.log10(3e-5), np.log10(0.5), 1000) * u.Hz
+freq = np.logspace(np.log10(1e-5), np.log10(1), 1000) * u.Hz
 
 _, ax = lw.visualisation.plot_sensitivity_curve(frequency_range=freq)
-ax.grid(True, zorder=-12)
-p = sns.scatterplot(data=s_df, x='f_dom', y='ASD', hue='ecc', size='Z', sizes=(50, 200),
-                    style='types', palette='RdYlGn_r', ax=ax)
+ax.grid(True, zorder=-1)
+p = sns.scatterplot(data=s_df, x='f_dom', y='ASD', hue='ecc', size='Z', palette='RdYlGn_r', ax=ax, lw=0, ec="k", zorder=2, style='types')
 handles, labels = p.get_legend_handles_labels()
 labels[0] = 'Eccentricity'
 labels[5] = 'Metallicity'
 labels[-5] = 'DCO Type'
 p.legend_.remove()
 ax.legend(handles, labels, loc='best')
-ax.set_ylim(top=5e-15)
 ax.set_title('LISA detectable DCOs')
 plt.tight_layout()
 plt.savefig('all_dco_snr_plotting.pdf')
 plt.savefig('all_dco_snr_plotting.png')
 plt.close()
 
-fig_, ax = plt.subplots(2, 2, figsize=(12, 10), sharey=True)
+fig_, ax = plt.subplots(2, 2, figsize=(12, 10), sharex=True)
 
 x, w = 0.04, 0.1
 y, height = 0.3, 0.05
 
-ylim_ = [3.1936014014661533e-21, 2.986243916404203e-15]
+ylim_ = [3.1936014014661533e-21, 2.986243916404203e-13]
 
 for x_ in ax:
     for x__ in x_:
@@ -95,19 +93,23 @@ for x_ in ax:
 
 
 def make_scatter_plot(df, dco_type, marker, axes):
+    axes.grid(True, zorder=-1)
     p_ = sns.scatterplot(data=df, x='f_dom', y='ASD', hue='ecc', size='Z', marker=marker,
-                         palette='RdYlGn_r', ax=axes, lw=0, ec="k")
+                          palette='RdYlGn_r', ax=axes, lw=0, ec="k", zorder=2)
     cax = axes.inset_axes([x, w, y, height])
     norm = plt.Normalize(df['ecc'].min(), df['ecc'].max())
     sm = plt.cm.ScalarMappable(cmap='RdYlGn_r', norm=norm)
     sm.set_array([])
     axes.figure.colorbar(sm, cax=cax, orientation='horizontal')
     handles_, labels_ = p_.get_legend_handles_labels()
+    labels_[5] = 'Metallicity'
     p_.legend_.remove()
+    axes.set_xlabel('Dominant Frequency [Hz]')
     axes.legend(handles_[5:-1], labels_[5:-1], loc='best')
     axes.annotate(f'{dco_type}: n={len(df)}', xy=(2 * x + w, (y - y / 2.) + (height / 2)),
                   xycoords="axes fraction", color="black", ha="center", va="center")
-    axes.set_ylim(ylim_)
+    if dco_type != 'BHNS':
+        axes.set_ylim(ylim_)
 
 
 make_scatter_plot(s_df_bhbh, 'BHBH', 'o', ax[0][0])
@@ -116,6 +118,8 @@ make_scatter_plot(s_df_bhns, 'BHNS', 'P', ax[1][0])
 make_scatter_plot(s_df_nsbh, 'NSBH', 's', ax[1][1])
 
 [i[1].set_ylabel('') for i in ax]
+ax[0][0].set_xlabel('')
+ax[0][1].set_xlabel('')
 
 plt.tight_layout()
 plt.savefig('dco_typewise_snr.pdf')

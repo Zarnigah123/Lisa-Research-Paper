@@ -91,23 +91,23 @@ plt.figure(FigureClass=Waffle, figsize=(10, 16), rows=5,
            columns=20, rounding_rule='nearest', cmap_name='Dark2')
 
 plt.tight_layout()
-plt.savefig('dco_type_MW_component_distribution.pdf')
-plt.savefig('dco_type_MW_component_distribution.png')
-plt.close()
+# plt.savefig('dco_type_MW_component_distribution.pdf')
+# plt.savefig('dco_type_MW_component_distribution.png')
+# plt.close()
 
-plt.figure(FigureClass=Waffle, figsize=(10, 3.5), rows=5,
-           plots={
-               111: {
-                   'values': [low_alpha_percentage, high_alpha_percentage, bulge_percentage],
-                   'labels': [low_alpha_percentage_, high_alpha_percentage_, bulge_percentage_],
-                   'legend': {'loc': 'lower center', 'bbox_to_anchor': (0.5, -0.2), 'ncol': 4},
-                   'title': {'label': 'DCO distribution in MW components'},
-                   'colors': ['pink', 'lightgreen', 'lightblue']
-               }
-           },
-           columns=20, rounding_rule='nearest')
+# plt.figure(FigureClass=Waffle, figsize=(10, 3.5), rows=5,
+#            plots={
+#                111: {
+#                    'values': [low_alpha_percentage, high_alpha_percentage, bulge_percentage],
+#                    'labels': [low_alpha_percentage_, high_alpha_percentage_, bulge_percentage_],
+#                    'legend': {'loc': 'lower center', 'bbox_to_anchor': (0.5, -0.2), 'ncol': 4},
+#                    'title': {'label': 'DCO distribution in MW components'},
+#                    'colors': ['pink', 'lightgreen', 'lightblue']
+#                }
+#            },
+#            columns=20, rounding_rule='nearest')
 
-plt.tight_layout()
-plt.savefig('dco_type_MW_distribution.pdf')
-plt.savefig('dco_type_MW_distribution.png')
-plt.close()
+# plt.tight_layout()
+# plt.savefig('dco_type_MW_distribution.pdf')
+# plt.savefig('dco_type_MW_distribution.png')
+# plt.close()

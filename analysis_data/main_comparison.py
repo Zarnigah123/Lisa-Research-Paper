@@ -45,19 +45,19 @@ def draw_arrows(a, b, axes):
                color='k', zorder=2)
 
 
-# fig, ax = plt.subplots(1, 1, figsize=(20, 4))
-# ax.grid('on', zorder=-10, ls='--')
-# [draw_arrows([1 + k, i], [1 + k, j], ax) for i, j, k in
-#   zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
-# [plt.plot([1 + k, 1 + k], [i, j], 'k.', zorder=5) if i == j else plt.plot(1 + k, i, 'k.', zorder=5)
-#   for i, j, k in zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
+fig, ax = plt.subplots(1, 1, figsize=(20, 4))
+ax.grid('on', zorder=-10, ls='--')
+[draw_arrows([1 + k, i], [1 + k, j], ax) for i, j, k in
+  zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
+[plt.plot([1 + k, 1 + k], [i, j], 'k.', zorder=5) if i == j else plt.plot(1 + k, i, 'k.', zorder=5)
+  for i, j, k in zip(dco_type_df.df_T, dco_type_df.df0e_T, range(len(dco_type_df.df0e_T)))]
 
-# ax.set_title(r'Divergence of final DCO type in $\aleph_1$ and $\aleph_2$ data sets')
-# ax.set_yticklabels(['', 'BHBH', '', 'NSNS', '', 'NSBH', '', 'BHNS'])
-# plt.tight_layout()
+ax.set_title(r'Divergence of final DCO type in $\aleph_1$ and $\aleph_2$ data sets')
+ax.set_yticklabels(['', 'BHBH', '', 'NSNS', '', 'NSBH', '', 'BHNS'])
+plt.tight_layout()
 
-# [plt.savefig(f'dco_type_divergence_in_two_datasets.{i}') for i in ['pdf', 'png']]
-# plt.close()
+[plt.savefig(f'dco_type_divergence_in_two_datasets.{i}') for i in ['pdf', 'png']]
+plt.close()
 
 
 ##################################################################################################

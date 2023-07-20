@@ -16,6 +16,9 @@ def get_max_distance_mask(file_name):
 
     return mean_distance != mean_distance.min(), mean_distance
 
+def get_max_f_orb(data_frame):
+    return f_orb[np.where(data_frame == max(data_frame))[0]][0]
+
 bhbh_m, bhbh_d = get_max_distance_mask('./BHBH_maxdist.npy')
 nsns_m, nsns_d = get_max_distance_mask('./NSNS_maxdist.npy')
 nsbh_m, nsbh_d = get_max_distance_mask('./NSBH_maxdist.npy')
@@ -37,9 +40,12 @@ ax.plot(f_orb[bhns_m], bhns_d[bhns_m], alpha=0.5, ls=':', label='BHNS')
 
 ax.plot(f_orb[:-1], all_mean[:-1], 'k-', label=r'Mean d$_{max}$')
 
+[print(f'{j} = {get_max_f_orb(i):.3E}')
+ for i, j in zip([bhbh_d, nsns_d, nsbh_d, bhns_d, all_mean], ['BHBH', 'NSNS', 'NSBH', 'BHNS', 'ALL'])]
+
 ax.set_xscale('log'); plt.yscale('log')
 ax.legend(loc='best')
-ax.set_xlabel('Orbital Frequency [Hz]')
+ax2.set_xlabel('Dominant Frequency [Hz]')
 ax.set_ylabel('Distance [kpc]')
 
 plt.tight_layout()

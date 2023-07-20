@@ -76,6 +76,6 @@ p = merged_and_unmerged([csv_file[k_mean[0]], csv_file[k_mean[1]]], ':', ax[1][3
 
 plt.tight_layout()
 
-plt.savefig('all_zams_params.pdf')
-plt.savefig('all_zams_params.png')
-plt.close()
+# plt.savefig('all_zams_params.pdf')
+# plt.savefig('all_zams_params.png')
+# plt.close()
