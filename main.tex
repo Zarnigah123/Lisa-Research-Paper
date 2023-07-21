@@ -239,6 +239,13 @@ CLASSINFOpdf
     The difference between lookback and evolution time of a binary was required to be greater than its merger time\footnote{Obtained via LEGWORK framework.}.
     Out of the merging binaries, BHBH pairs had the most detectable sources in the data set, ($\sim$70.73\%), followed by NSBH pair ($\sim$68.54\%), BHNS pair ($\sim$40.49\%) and lastly NSNS pair ($\sim$26.96\%), see table~\ref{tab:dco_details} \textsc{\textbf{RowII}}.
     
+%    \begin{figure}[!h]%
+%		\centering
+%		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/all_zams_params}
+%		\caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the `candidate' binaries. The bottom row shows the selection of supernova kick parameters made by the COMPAS suite.}
+%		\label{fig:all_zams_params}
+%	\end{figure}%
+
     As the number of detectable binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}.} multiple detections of a single binary object are present in the final output.
     Table~\ref{tab:bhbh-details-table} shows selective details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages.
     In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
@@ -333,7 +340,10 @@ CLASSINFOpdf
 %    Hence, this is another way to differentiate sources.
 %    Hence, the BHBH pairs have the most eccentric pairs having the highest average eccentricity and $\langle M_c\rangle$.
 
-	We also notice a stray binary pair in BHNS with an ASD $\sim$\SI{8e-12}{\hertz\tothe{1/2}}, the highest in $\Theta_1$. The particular BHNS pair started off as a ZAMS pair with $\sim$\SI{33.4489}{\Msun} and $\sim$\SI{17.7114}{\Msun} companions with a semi-major axis of $\sim$\SI{0.6662}{\AU}. The eccentricity and metallicity of the pair at ZAMS was $\sim$\num{0.1534} and $\sim$\num{0.0239}. With
+	We also notice a stray binary pair in BHNS with an ASD $\sim$\SI{8e-12}{\hertz\tothe{1/2}}, the highest in $\Theta_1$. 
+	The particular BHNS pair started off as a ZAMS pair with $\sim$\SI{33.4489}{\Msun} and $\sim$\SI{17.7114}{\Msun} companions, with a semi-major axis of $\sim$\SI{0.6662}{\AU}. 
+	The eccentricity and metallicity of the pair at ZAMS was $\sim$\num{0.1534} and $\sim$\num{0.0239}. 
+	With lookback and evolution times of 
 
     \begin{figure}[!h]%
 		\centering
@@ -470,7 +480,7 @@ CLASSINFOpdf
     
     \begin{figure*}[!h]%
     	\centering
-%    	\includegraphics[width=\textwidth]{analysis_data/dcotype_divergence_in_two_datasets}
+    	\includegraphics[width=\textwidth]{analysis_data/dco_type_divergence_in_two_datasets}
     	\caption{Plot showing the change in DCO ending states for the common seed numbers from $\aleph_1$ and $\aleph_2$ data sets. The direction of arrows shows the change in the DCO type from $\aleph_1$ and $\aleph_2$ data set. The binaries that didn't change the DCO type after evolution are represented by a filled dot.}
     	\label{fig:dcotypedivergenceintwodatasets}
     \end{figure*}%
@@ -500,14 +510,7 @@ CLASSINFOpdf
 
 
     \section{Discussion and Future work}\label{sec:df}
-    
-        \begin{figure*}[!h]%
-    	\centering
-%    	\includegraphics[width=\textwidth]{analysis_data/main_analysis_folder/all_zams_params}
-    	\caption{The top row shows the distribution of mass, semimajor axis and eccentricity of binary pairs at ZAMS and DCO stage for the `candidate' binaries. The bottom row shows the selection of supernova kick parameters made by the COMPAS suite.}
-    	\label{fig:all_zams_params}
-    \end{figure*}%
-    
+        
     \ifCLASSOPTIONcaptionsoff
     \newpage
     \fi

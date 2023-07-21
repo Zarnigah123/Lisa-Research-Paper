@@ -5,7 +5,8 @@ import os
 import h5py as h5
 import pandas as pd
 
-h5files = [f for f in os.listdir(os.curdir) if f.endswith('.h5') and not f.endswith('0e.h5')]
+# h5files = [f for f in os.listdir(os.curdir) if f.endswith('.h5') and not f.endswith('0e.h5')]
+h5files = [f for f in os.listdir(os.curdir) if f.endswith('0e.h5')]
 
 dfs_ = [pd.DataFrame(h5.File(i)['simulation'][()]) for i in h5files]
 
@@ -14,6 +15,6 @@ for i, v in enumerate(h5files):
 
 joint = pd.concat(dfs_)
 
-joint.to_csv('./combined_dcos.csv',
+joint.to_csv('./combined_dcos0e.csv',
               sep=',',
               index=False)
