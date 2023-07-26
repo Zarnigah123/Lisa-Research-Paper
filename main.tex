@@ -19,6 +19,7 @@
 \usepackage{siunitx}
 \usepackage{xcolor}
 \usepackage{subfiles}
+\usepackage{rotating}
 
 \usepackage{longtable}
 
@@ -27,7 +28,12 @@
 \DeclareSIUnit{\parsec}{pc}
 \DeclareSIUnit{\yr}{yr}
 \DeclareSIUnit{\Msun}{M_\odot}
+\DeclareSIUnit{\Rsun}{R_\odot}
 \DeclareSIUnit{\AU}{AU}
+
+\newcommand{\wraptablerow}[2]{\begin{tabular}[c]{@{}c@{}}
+                                  #1\\ #2
+\end{tabular}}
 
 \newcommand{\kpc}{\kilo\parsec}
 \newcommand{\lowalpha}{low-$[\alpha/\text{Fe}]$}
@@ -74,8 +80,8 @@ CLASSINFOpdf
     \IEEEpeerreviewmaketitle
     \begin{abstract}
         The double compact objects (DCOs) present a broad range of possible GW detections in our MW galaxy. Here we present a case study on the detection of DCOs with progenitors having high metallic content. Furthermore, the effects of eccentricity on the ZAMS stage on the evolution of binaries is also checked via a comparative analysis for two identical data sets. The binaries were generated using the Compact Object Mergers: Population Astrophysics and Statistics (COMPAS) suite, followed by their distribution in a metallicity$-$age dependent Milky Way galaxy model.
-        
-        For a 4-year LISA mission, this study predicts a detection rate between 79-127(86-131) detections for data sets with variable ZAMS and zero ZAMS eccentricity respectively. Out of these, 21-45(17-36) are BHBHs, 17-44(17-38) are NSNSs, 6-28(11-29) are BHNSs and 13-39(21-46) are NSBHs.
+
+        For a 4-year LISA mission, this study predicts a detection rate between 83-124(86-131) detections for data sets with variable ZAMS and zero ZAMS eccentricity respectively. Out of these, 21-45(17-36) are BHBHs, 17-44(17-38) are NSNSs, 6-28(11-29) are BHNSs and 13-39(21-46) are NSBHs.
         NSBH were considered separate from BHNS as the stellar evolution indicates that the primary star in the binary ended up as a NS instead of a BH.
         It was also observed that some common binaries end up in different DCO stages in both data sets.
 	\end{abstract}
@@ -216,28 +222,28 @@ CLASSINFOpdf
     \label{sec:evolution-and-detection}
 
     After running the simulations as outlined in section~\ref{sec:population_synthesis}, we obtained 12254 DCOs ($\sim0.12254\%$).
-    Following section~\ref{sec:evolution-methodology}, we obtain the required parameter values of only 6539 DCOs that merged within Hubble time ($\sim$53.3622\%) thus making them a potential LISA source.\footnote{Overall, only $\sim$0.06539\% binary system formed into DCOs that merge within Hubble time.}
+    Following section~\ref{sec:evolution-methodology}, we obtain the required parameter values of only 6539 DCOs that merged within Hubble time ($\sim$53.3621\%) thus making them a potential LISA source.\footnote{Overall, only $\sim$0.06539\% binary system formed into DCOs that merge within Hubble time.}
     The Hubble time merge rate of DCOs is given in table~\ref{tab:dco_details},
     \begin{table}[!ht]%
         \centering
-        \resizebox{\columnwidth}{!}{
+        \resizebox{!}{!}{
         \begin{tabular}{@{}ccccc@{}}
             \toprule
             \multirow{2.5}{*}{Type}&\multirow{2.5}{*}{BHBH} & \multirow{2.5}{*}{NSNS} & \multicolumn{2}{c}{BHNS} \\ \cmidrule(l){4-5}
             &&           & NSBH    & BHNS     \\ \midrule
-            \notFraction{M}{T} & \notFraction{492}{663} & \notFraction{4752}{9219} & \notFraction{480}{868} & \notFraction{815}{1504} \\ 
-            \notFraction{D}{M} & \notFraction{348}{492} & \notFraction{1281}{4752} & \notFraction{329}{480} & \notFraction{330}{815} \\ \bottomrule
+            \notFraction{M}{T} & \notFraction{492}{663} & \notFraction{4752}{9219} & \notFraction{480}{868} & \notFraction{815}{1504} \\
+            \notFraction{D}{M} & \notFraction{348}{492} & \notFraction{1281}{4752} & \notFraction{300}{480} & \notFraction{327}{815} \\ \bottomrule
         \end{tabular}%
     	 }
         \caption{\textsc{\textbf{RowI}} shows the merging (M) vs total (T) formed DCOs in this study, \textsc{\textbf{RowII}} shows the uniquely detectable (D) vs the merging (M) DCOs from this study for $\Theta_1$.}
         \label{tab:dco_details}
     \end{table}
 
-    The highest merging rate in this study is of BHBH pairs ($\sim$74.21\%), followed by NSBH pairs ($\sim$55.30\%), BHNS ($\sim$54.2\%) and lastly NSNS DCO type ($\sim$51.55\%) comprising the `candidate binaries', see table~\ref{tab:dco_details} \textsc{\textbf{RowI}}.\footnote{Such DCO pairs which can have a potential LISA detection.}
+    The highest merging rate in this study is of BHBH pairs ($\sim$74.21\%), followed by NSBH pairs ($\sim$55.30\%), BHNS ($\sim$54.19\%) and lastly NSNS DCO type ($\sim$51.55\%) comprising the `candidate binaries', see table~\ref{tab:dco_details} \textsc{\textbf{RowI}}.\footnote{Such DCO pairs which can have a potential LISA detection.}
 
     Using the LEGWORK framework~\cite{wagg2021legwork}, these binaries were than checked for their inspiral phase using the $\interval{evolve}$\footnote{Obtained via COMPAS.} and $\interval{lookback}$\footnote{Obtained via galaxy synthesis.}.
-    The difference between lookback and evolution time of a binary was required to be greater than its merger time\footnote{Obtained via LEGWORK framework.}.
-    Out of the merging binaries, BHBH pairs had the most detectable sources in the data set, ($\sim$70.73\%), followed by NSBH pair ($\sim$68.54\%), BHNS pair ($\sim$40.49\%) and lastly NSNS pair ($\sim$26.96\%), see table~\ref{tab:dco_details} \textsc{\textbf{RowII}}.
+    The difference between lookback and evolution time of a binary was required to be less than its merger time\footnote{Obtained via LEGWORK framework.}.
+    Out of the merging binaries, BHBH pairs had the most detectable sources in the data set, ($\sim$70.73\%), followed by NSBH pair ($\sim$62.5\%), BHNS pair ($\sim$40.12\%) and lastly NSNS pair ($\sim$26.96\%), see table~\ref{tab:dco_details} \textsc{\textbf{RowII}}.
     
 %    \begin{figure}[!h]%
 %		\centering
@@ -249,7 +255,7 @@ CLASSINFOpdf
     As the number of detectable binaries in our study was small compared to the total generated population,\footnote{Due to not using any technique that forces DCO production, e.g., STROOPWAFEL~\cite{Broekgaarden2019}.} multiple detections of a single binary object are present in the final output.
     Table~\ref{tab:bhbh-details-table} shows selective details about mass of progenitor and their evolutionary ends for maximum and minimum mass at ZAMS and DCO stages.
     In appendix~\ref{sec:paramter-distribution-across-the-galaxies} we present the number of detection and mean values for selected parameters\footnote{The selected parameters include, $\mone{DCO}$, $\mtwo{DCO}$, $\semaxis{DCO}$, $\ecc{DCO}$, Z, $\interval{evol}$, $\interval{lookback}$, and SNR.} across the hundred instances of MW galaxies.
-    The number of detections across all the MW instances came out to be 12758.
+    The number of detections across all the MW instances came out to be 12841.
     
     
 
@@ -302,14 +308,14 @@ CLASSINFOpdf
 
 	 \begin{figure}[!h]%
 		\centering
-		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_typewise_snr}
-		\caption{Detectable sources' characteristic strain vs. dominant frequency in our simulations are shown on the LISA sensitivity curve. The sources are color-coded based on their eccentricities, green for low and red for high eccentric sources.}
+        \includegraphics[width=\columnwidth]{analysis_data/004__images_for_latex/dco_typewise_snr}
+        \caption{Detectable sources' characteristic strain vs. dominant frequency in our simulations are shown on the LISA sensitivity curve for $\Theta_1$ data set. The sources are color-coded based on their eccentricities, green for low and red for high eccentric sources.}
 		\label{fig:alldcosnrplotting}
 	\end{figure}
 
     \begin{figure}[!h]
 		\centering
-		\includegraphics[width=\columnwidth]{analysis_data/dco_fdom_ecc_details}
+        \includegraphics[width=\columnwidth]{analysis_data/004__images_for_latex/dco_fdom_ecc_details}
 		\caption{\textsc{\textbf{Row1:}} Eccentricity characterized distribution of DCOs for their orbital frequency. \textsc{\textbf{Row2:}} Same as \textsc{\textbf{Row1}} but for the binary's dominant frequency. \textsc{\textbf{Row3:}} Number of binaries associated with the given eccentricity in log scale. The number inside the bars show the actual number of binaries for the given eccentricity. The log scaling was chosen due to relative lower number of DCOs in NSNS and BHNS types.}
 		\label{fig:dcofdomeccdetails}
 	\end{figure}
@@ -340,14 +346,29 @@ CLASSINFOpdf
 %    Hence, this is another way to differentiate sources.
 %    Hence, the BHBH pairs have the most eccentric pairs having the highest average eccentricity and $\langle M_c\rangle$.
 
-	We also notice a stray binary pair in BHNS with an ASD $\sim$\SI{8e-12}{\hertz\tothe{1/2}}, the highest in $\Theta_1$. 
-	The particular BHNS pair started off as a ZAMS pair with $\sim$\SI{33.4489}{\Msun} and $\sim$\SI{17.7114}{\Msun} companions, with a semi-major axis of $\sim$\SI{0.6662}{\AU}. 
-	The eccentricity and metallicity of the pair at ZAMS was $\sim$\num{0.1534} and $\sim$\num{0.0239}. 
-	With lookback and evolution times of 
+	We also notice a stray binary pair in BHNS with an ASD $\sim$\SI{8e-12}{\hertz\tothe{1/2}}, the highest in $\Theta_1$.
+    The parameter of that particular BHNS pair are presented in table~\ref{tab:bhnsbinarydetails}. It is important to note that before the binary's evolution for SNR detection, it had originally evolved past its look-back time. With a lookback time of $\sim$\scientific{10.393}{\mega\yr} and evolution time of $\sim$\scientific{10.944}{\mega\yr}, the merging time for this binary came out to be only $\sim$\scientific{3.83}{\yr} when put into LEGWORK. This also explains why the parameters of this binary are identical when considering the DCO stage and near merging stage after evolving via LEGWORK. The system is emitting a dominant frequency of $\sim$\SI{1.439e-5}{\hertz} at a harmonic of 1, which makes it exactly the same as its orbital frequency.
+
+    % Please add the following required packages to your document preamble:
+    % \usepackage{booktabs}
+    % \usepackage{graphicx}
+    \begin{table}[!h]%
+        \centering
+        \resizebox{\columnwidth}{!}{%
+            \begin{tabular}{@{}ccccccc@{}}
+                \toprule
+                \wraptablerow{Binary}{Stage} & \wraptablerow{$m_1$}{$[\si{\Msun}]$} & \wraptablerow{$m_2$}{$[\si{\Msun}]$} & \wraptablerow{$a$}{\si{\AU}} & $e$ & $Z$ & $\o$\\ \midrule
+                ZAMS                             & 33.449                               & 17.711                               & 0.666                        & 0.153 & 0.024 & 8848207 \\
+                DCO                              & 6.495                                & 1.407                                & 0.034                        & 0.999 & //    & //      \\  \bottomrule
+            \end{tabular}%
+        }
+        \caption{Parameters at difference stages of binary evolution for BHNS pair with seed number 8848207.}
+        \label{tab:bhnsbinarydetails}
+    \end{table}%
 
     \begin{figure}[!h]%
 		\centering
-		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_type_MW_component_distribution_cropped}
+        \includegraphics[width=\columnwidth]{analysis_data/004__images_for_latex/dco_type_MW_component_distribution}
 		\caption{Waffle charts showing percentage proportion for DCO type detections in the MW instance components in this study.}
 		\label{fig:dcotypemwcomponentdistributioncropped}
 	\end{figure}%
@@ -369,7 +390,7 @@ CLASSINFOpdf
 
 	\begin{figure}[!h]%
 		\centering
-		\includegraphics[width=\columnwidth]{analysis_data/main_analysis_folder/dco_type_MW_distribution}
+        \includegraphics[width=\columnwidth]{analysis_data/004__images_for_latex/dco_type_MW_distribution}
 		\caption{Waffle chart showing the total number of detections per MW instance component in this study on the whole.}
 		\label{fig:dcotypemwdistribution}
 	\end{figure}%
@@ -414,21 +435,21 @@ CLASSINFOpdf
 	We keep the detection threshold at $\rho_{\min}\,=\,7$, and $\rho(d\,=\,1\,\text{kpc})$ is SNR of the source if it was at $1\,\text{kpc}$ distance from the detector.
 	We calculated the SNR of all the detected sources at \SI{1}{\kpc} distance using the python package LEGWORK~\cite{wagg2021legwork}.
 	Afterward, their maximum distances $(d_{\max})$ were calculated.
-	
+
     Figure~\ref{fig:dmax} shows the mean maximum distances for all the detected sources.
     The black line shows the average maximum distance for all the types combined.
     The LISA sensitivity curve is also overlaid on the graph.
 
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=\linewidth]{analysis_data/d_max}
+        \includegraphics[width=\linewidth]{analysis_data/004__images_for_latex/d_max}
 		\caption{Mean maximum distances for all of the different types of DCO corresponding to their orbital frequency. The overall average maximum detection distance is shown by a black line.}
 		\label{fig:dmax}
 	\end{figure}
 
-    BHBH, being the dominant source can be observed to an average distance of $\sim$\scientific{1.95e4}{\kpc}.
-   	For NSNS, NSBH, and BHNS the maximum distance came out to be $\sim$\scientific{1.207e3}{\kpc}, $\sim$\scientific{2.441e3}{\kpc}, and $\sim$\scientific{1.207e3}{\kpc} respectively.
-   	The combined mean maximum distance comes out to be $\sim$\scientific{6746}{\kpc}.
+    BHBH pairs can be observed up to an average distance of $\sim$\scientific{1.95e4}{\kpc}.
+    For NSNS, BHNS, and NSBH the maximum distance came out to be $\sim$\scientific{1.21e3}{\kpc}, $\sim$\scientific{4.28e3}{\kpc}, and $\sim$\scientific{2.43e3}{\kpc} respectively.
+    The combined mean maximum distance comes out to be $\sim$\scientific{6.74e3}{\kpc}.
 %    NSBH and BHNS have almost the same average $d_{\max}$ i.e between \SI{1e3}{\kpc} and \SI{1e4}{\kpc} while NSNS has peak at $\sim\,$\SI{1e3}{\kpc}.
 %    The red dotted lines illustrate some known galaxies to have a better understanding of distances.
 %    Hence, BHBH can be discovered as far as Hoag's Object, NSNS in M31, and both BHNS and NSBH are far from M31 but much below Hoag's Object.
@@ -447,85 +468,143 @@ CLASSINFOpdf
     In order to fairly compare the two, given only the difference of eccentricity, we make use of the seed numbers provided in $\Theta_1$ data set.
     With the exception of SN kick parameters and eccentricity, all the other parameters were kept the same as in the original data set.
     We evolved the binaries for $\Theta_2$ consistent with the method described in this paper.
-    We first briefly discuss the output parameters for $\Theta_2$,
-    
+%    We first briefly discuss the output parameters for $\Theta_2$,
+
     \subsection{Hubble Merger Rate} 
     After running the simulations, we obtained 9751 DCO pairs ($\sim0.09751\%$). Out of these, only 5178 ($\sim53.1022\%$) were able to merge within Hubble time, (see table~\ref{tab:dco_details0e}).
 
 	From table~\ref{tab:dco_details0e} \textsc{\textbf{RowI}} we observe that the highest merging rate comes from BHBH as well ($\sim$66.32\%), followed by BHNS pairs ($\sim$65.87\%), NSBH ($\sim$63.03\%) and lastly, NSNS dco type ($\sim$51.57\%).
-	
-	Table~\ref{tab:dco_details0e} \textsc{\textbf{RowII}} shows that we still have BHBH as the dominant detectable DCO type ($\sim$77.25\%) detections, followed by NSBH pairs ($\sim$72.47\%), BHNS pairs ($\sim$68.91\%) and lastly, NSNS DCO type ($\sim$17.46\%) DCOs being detected.
+
+    Table~\ref{tab:dco_details0e} \textsc{\textbf{RowII}} shows that we have NSBH as the dominant detectable DCO type ($\sim$77.93\%) detections instead of BHBH as in $\Theta_1$ data set. This is followed by BHBH pairs ($\sim$77.25\%), BHNS pairs ($\sim$68.91\%) and lastly, NSNS pairs ($\sim$17.46\%).
     
     \begin{table}[!ht]%
 		\centering
-		\resizebox{\columnwidth}{!}{
+        \resizebox{!}{!}{
 			\begin{tabular}{@{}ccccc@{}}
 				\toprule
-				\multirow{2.5}{*}{Type}&\multirow{2.5}{*}{BHBH} & \multirow{2.5}{*}{NSNS} & \multicolumn{2}{c}{BHNS} \\ \cmidrule(l){4-5}
+                \multirow{2.5}{*}{Type} & \multirow{2.5}{*}{BHBH} & \multirow{2.5}{*}{NSNS} & \multicolumn{2}{c}{BHNS} \\ \cmidrule(l){4-5}
 				&&           & NSBH    & BHNS     \\ \midrule
-				\notFraction{M}{T} & \notFraction{189}{285} & \notFraction{4438}{8605} & \notFraction{385}{568} & \notFraction{193}{293}  \\ 
-				\notFraction{D}{M} & \notFraction{146}{189} & \notFraction{775}{4438} & \notFraction{279}{385} & \notFraction{133}{193} \\ \bottomrule
+                \notFraction{M}{T} & \notFraction{189}{285} & \notFraction{4438}{8605} & \notFraction{358}{568} & \notFraction{193}{293}  \\
+                \notFraction{D}{M} & \notFraction{146}{189} & \notFraction{775}{4438}  & \notFraction{279}{358} & \notFraction{133}{193} \\ \bottomrule
 			\end{tabular}%
 		}
 		\caption{\textsc{\textbf{RowI}} shows the merging (M) vs total (T) formed DCOs in this study, \textsc{\textbf{RowII}} shows the uniquely detectable (D) vs the merging (M) DCOs from this study for $\Theta_2$.}
 		\label{tab:dco_details0e}
 	\end{table}
 
-	\subsection{Effects of eccentricity}
-    \label{subsec:effects-of-eccentricity}
-    A total of 140 seeds were found common between the two data sets.
-    Out of these 140 seeds, 105 were found to evolve to the same final stage before merging.
+    The only particular DCO type with a noticeable effect of ZAMS eccentricity is the NSNS type which shows a lot of detections given that the binaries start with eccentric orbits.
+
+    \subsection{Detection rates}
+    \label{subsec:detectionetection-rates}
+    The $\Theta_2$ data set shows an overall slight increase in the detection rate, $(86-131)$ detections against $(83-124)$ detection for $\Theta_1$ data set.
+    Although minor overall, the detection rate is significant for BHNS, and NSBH pairs going from $(6-28)$ and $(13-39)$ in $\Theta_1$ to $(11-29)$ and $(21-46)$ respectively for $\Theta_2$ over a four year LISA mission.
+
+    Similar to appendix~\ref{sec:paramter-distribution-across-the-galaxies} for $\Theta_1$, appendix~\ref{sec:paramter-distribution-across-the-galaxies-theta-2} shows the distribution of parameters and average number of DCO detections across the ensemble of the galaxies in this study for $\Theta_2$.
+    The difference in average number of BHNS detections in the two data set is $\sim$18, the largest, jumping from 33 to 51 for $\Theta_1$ and $\Theta_2$ respectively.
+    Similarly, the NSBH binaries show an average increase of 3 detections. As for BHBH and NSNS pairs, there are more detections in $\Theta_1$ compared to $\Theta_2$.
+
+    It is also noted that the mean parameter values for $\Theta_2$ are also higher than $\Theta_1$ for BHNS, and NSBH pairs, but this might be because of the increased number of detections and vice versa for BHBH, and NSNS pairs.
+
+    \subsection{Maximum detection distance}
+    Figure~\ref{fig:dmaxdifference} shows the ratio of maximum detection distance between $\Theta_2$ and $\Theta_1$.
+    We note that the ratio is less than 1 at lower orbital frequencies, from \SIrange{1e-5}{1.15e-4}{\hertz} after which is increases and only comes below 1 around \SIrange{1.232e-1}{1.384e-1}{\hertz}.
+    This suggests that the binaries with circular ZAMS orbits will evolve such that they can be detected to larger distances compared to one with eccentric ZAMS orbits in LISA sensitive band.
+
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\columnwidth]{analysis_data/004__images_for_latex/d_max_difference}
+        \caption{Mean maximum distance of the two data sets, black solid and dashed lines, and their ratio, red solid line.}
+        \label{fig:dmaxdifference}
+    \end{figure}
+
+    \subsection{Final evolutionary stages}
+    \label{subsec:finalevolutionarystages}
+    A total of 137 seeds were found common between the two data sets.
+    Out of these 140 seeds, 104 were found to evolve to the same final stage before merging in both data sets.
     The binaries with common and diverging final evolutionary stages are shown in figure~\ref{fig:dcotypedivergenceintwodatasets}.
-    The lesser number of diverging cases indicate that the ZAMS eccentricity might not play as much of a bigger role in the evolution of the binaries.
-    
-    \begin{figure*}[!h]%
-    	\centering
-    	\includegraphics[width=\textwidth]{analysis_data/dco_type_divergence_in_two_datasets}
-    	\caption{Plot showing the change in DCO ending states for the common seed numbers from $\aleph_1$ and $\aleph_2$ data sets. The direction of arrows shows the change in the DCO type from $\aleph_1$ and $\aleph_2$ data set. The binaries that didn't change the DCO type after evolution are represented by a filled dot.}
-    	\label{fig:dcotypedivergenceintwodatasets}
-    \end{figure*}%
-    
-	
-    \subsection{Detection rates}\label{subsec:detectionetection-rates}
-    The prediction for VE is a total of 136 detections in a 4 years LISA mission.
-    A decrease in the detection rate is observed for E0 which is detected in a 4 years LISA mission.
-    As there is no difference in any parameter other than eccentricity, then it is surely the root cause of the decline in detections.
+    The lesser number of diverging cases indicate that the ZAMS eccentricity might not play as much of a bigger role in the development of binary's final stages.
 
-    The difference in different types of sources is shown in the pie chart in which there is a clear reduction in the detected sources. \textbf{Explain the pie chart more}
+    For a better understanding of what the plot is showing, consider the two points highlighted.
+    The red marker on the tail of the arrow shows the DCO stage for the binary in $\Theta_1$ data set, the arrow indicates direction of divergence in evolution with the arrow head showing the final DCO stage of the same binary in $\Theta_2$ data set. On the other hand, the cyan marker indicates no divergence in the evolution, meaning that the binary had the same final evolution stage in both the data sets. The particular binaries in question have seed numbers, 44735 and 1367057 respectively.
 
-    %\begin{figure}
-    %    \centering
-    %    \includegraphics[width=\linewidth]{pie_e0_evar.jpg}
-    %    \caption{Comparison of detection rate in VE and E0.}
-    %    \label{pie}
-    %\end{figure}
+    \subsection{Two interesting NSNS binaries}
+    \label{subsec:twointerestingnsnsbinaries}
 
-    \subsection{Model variation: To be added somewhere else,}
-    \label{subsec:model_variation}
-    In a number of previous works, $e_\text{ZAMS}$ was taken as zero~\cite{Vigna2018, Barrett2018, Lau2020, Broekgaarden2021, wagg2021gravitational}.
-    The main reason for this assumption is that they argue that eccentricity at ZAMS is not likely critical for predicting detection rates as they deal with post-interaction binaries and their orbital eccentricities become zero after mass transfer~\cite{Hurley2002}. %, de2015merger}).
-    To test the accuracy of this assumption, we simulate another population with the same parameters.
-    The only change is that $e_\text{ZAMS}$ of the binaries is left to be varied by the COMPAS suite.
-    We compare the difference in detection rates and properties of the two models and give our conclusion.
+    Appendix~\ref{sec:paramter-distribution-across-the-galaxies-theta-2} figure~\ref{fig:nsbh0endetections} shows a spike in the NSNS SNR plot. This is due to an extremely high value of SNR found in the simulated galaxy number 43, with an average $\log_{10}$(SNR) of $1.6864\pm2.7482$. The maximum SNR in that galaxy is of the binary at seed number 6308709. The particulars of this binary are given in table~\ref{tab:weirdnsns}.
+    The values in the table are rounded off for display purposes.
 
+    \begin{table}[!hb]%
+        \centering
+        \resizebox{!}{!}{
+            \begin{tabular}{@{}cccc@{}}
+                \toprule
+                $\mone{DCO}$ & $\mtwo{DCO}$                      & $m_\text{chirp}$      & $\semaxis{DCO}$      \\
+                1.26\,\si{\Msun} & 1.91\,\si{\Msun}                  & 1.35\,\si{\Msun}      & 0.044\,\si{\AU}      \\ \midrule[1pt]
+                $\ecc{DCO}$      & Z                                 & $t_\text{evol}$       & $t_\text{lookback}$  \\
+                0.9999           & 0.02595                           & 30.135\,\si{\mega\yr} & 4.967\,\si{\mega\yr} \\ \midrule[1pt]
+                SNR              & \wraptablerow{MAX SNR}{harmonics} & Galaxy                & \o                   \\
+                \num{6.8467e14}  & 2                                 & 43                    & 6308709              \\ \bottomrule
+            \end{tabular}
+        }
+        \caption{Parameters of the NSNS pair with highest SNR in galaxy number 43.}
+        \label{tab:weirdnsns}
+    \end{table}%
 
-    \section{Discussion and Future work}\label{sec:df}
-        
-    \ifCLASSOPTIONcaptionsoff
-    \newpage
-    \fi
+%	Another particularly interesting thing is the number of SNR harmonics for this binary. Even though the orbit is extremely eccentric, $\ecc{DCO} \approx 0.999923$, the maximum harmonic is still 2 which should be for circular binaries not for such kind of binaries.
+
+    \begin{sidewaystable}
+        \centering
+        \includegraphics[width=\textwidth]{analysis_data/004__images_for_latex/dco_type_divergence_in_two_datasets}
+        \captionof{figure}{Plot showing the change in DCO ending states for the common seed numbers from $\Theta_1$ and $\Theta_2$ data sets. The direction of arrows shows the change in the DCO type from $\Theta_1$ and $\Theta_2$ data set. The binaries that didn't change the DCO type after evolution are represented by a filled dot.}
+        \label{fig:dcotypedivergenceintwodatasets}
+    \end{sidewaystable}
+
+    \begin{figure}[!h]%
+        \centering
+        \includegraphics[width=\columnwidth]{analysis_data/004__images_for_latex/dco_typewise_snr0e}
+        \caption{Same as figure~\ref{fig:alldcosnrplotting} but for $\Theta_2$ data set.}
+        \label{fig:dcotypewisesnr0e}
+    \end{figure}%
+
+    Upon further investigations, we came to know that the binary might have merged already.
+    The LISA parameters, $\ecc{LISA}, \semaxis{LISA}, f_\text{LISA}$, for said binary show that the semi-major axis and eccentricity for this binary at the time of SNR detection are \num[scientific-notation=engineering]{8.66e-51}\,AU and \num[scientific-notation=engineering]{1.034e-71} respectively.
+    The extremely high SNR also accompanies an equally high dominant frequency, out of the plotting range, of roughly \num{1.4e68}\,\si{\hertz} and an undefined ASD value.
+    We show the detections of $\Theta_2$ is figure~\ref{fig:dcotypewisesnr0e}.
+    The binary discussed above, with seed number 6308709, is not visible in this plot.
+
+    There are three more NSNS detections that are out of characteristics, and all three are the same pair with seed number 1699345.
+
+    \begin{table}[!h]
+        \centering
+        \resizebox{!}{!}{
+            \begin{tabular}[c]{@{}ccccc@{}}
+                \toprule
+                \multicolumn{5}{c}{LISA parameters for $\o = 1699345$} \\\midrule
+                & \wraptablerow{$f_\text{orb}\times10^{-3}$}{$\si{\hertz}$} & \wraptablerow{$f_\text{dom}\times10^{-17}$}{$\text{Hz}^{-1/2}$} & \wraptablerow{$\semaxis{LISA}\times10^{-3}$}{$\si{\Rsun}$} & $\ecc{LISA}$\\\midrule
+                1 & \num{27.318}                                              & \num{2.611}                                                     & \num{35.384}                                               & \num{0.4175} \\
+                2 & \num{52.504}                                              & \num{3.155}                                                     & \num{22.890}                                               & \num{0.2601} \\
+                3 & \num{255.01}                                              & \num{1.236}                                                     & \num{7.981}                                                & \num{0.0554} \\\bottomrule
+            \end{tabular}
+        }
+        \caption{LISA parameters for binary with $\o = 1699345$ obtained by LEGWORK before SNR calculations.}
+        \label{tab:parameters1699345}
+    \end{table}
+
+%    \ifCLASSOPTIONcaptionsoff
+%    \newpage
+%    \fi
 
     \cleardoublepage
     \bibliographystyle{others/apj}
     \bibliography{reference}
-
     \cleardoublepage
-    %	\onecolumn
     \appendices
     \input{appendixa}
     \newpage
     \input{appendix_milkyway}
     \newpage
     \input{detection_images}
+    \newpage
+    \input{appendixd_0e}
 
 \end{document}
