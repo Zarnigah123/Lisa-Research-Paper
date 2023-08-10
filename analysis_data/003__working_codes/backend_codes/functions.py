@@ -403,7 +403,7 @@ def make_detectable_dataset(path_to_h5_file, number_of_galaxy_instances, binary_
 
         sources = lw.source.Source(m_1=dco_m1, m_2=dco_m2, ecc=e_LISA, dist=dist, f_orb=f_orb_LISA,
                                    sc_params={"t_obs": observation_time})
-        snr = sources.get_snr(t_obs=4 * u.yr)
+        snr = sources.get_snr(t_obs=observation_time)
         harmonics = sources.max_snr_harmonic
 
         detectable = snr > snr_cutoff
