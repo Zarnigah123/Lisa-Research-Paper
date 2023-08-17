@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main_aastex.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: aasjournal.bst
+Database file #1: reference.bib
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'str_pool' (item size: 1) to 130000 items.
+You've used 63 entries,
+            3168 wiz_defined-function locations,
+            1179 strings with 56967 characters,
+and the built_in function-call counts, 55025 in all, are:
+= -- 2505
+> -- 7984
+< -- 21
++ -- 2661
+- -- 2734
+* -- 6592
+:= -- 11224
+add.period$ -- 66
+call.type$ -- 63
+change.case$ -- 360
+chr.to.int$ -- 62
+cite$ -- 63
+duplicate$ -- 1087
+empty$ -- 1818
+format.name$ -- 2810
+if$ -- 9948
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 57
+newline$ -- 200
+num.names$ -- 254
+pop$ -- 400
+preamble$ -- 1
+purify$ -- 360
+quote$ -- 0
+skip$ -- 964
+stack$ -- 0
+substring$ -- 1257
+swap$ -- 30
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 567
+warning$ -- 0
+while$ -- 232
+width$ -- 0
+write$ -- 700
